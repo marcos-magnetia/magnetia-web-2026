@@ -1,26 +1,169 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ================================================
+   MAGNETIA 2026 — Tailwind v4 Theme (Neo-Suizo)
+   ================================================ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors */
+  --color-magnetia-red: #E64A58;
+  --color-magnetia-black: #1A1A1A;
+  --color-white: #FFFFFF;
+  --color-gray-50: #F9FAFB;
+  --color-gray-100: #F7F7F7;
+  --color-gray-200: #EFEFEF;
+  --color-gray-400: #A0A0A0;
+  --color-gray-600: #666666;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ================================================
+   BASE STYLES
+   ================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    color: var(--color-magnetia-black);
+    background: var(--color-white);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  ::selection {
+    background: rgba(230, 74, 88, 0.15);
+    color: var(--color-magnetia-black);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ================================================
+   ANIMATIONS (only allowed: fade, slide, stagger)
+   ================================================ */
+
+/* Marquee (testimonials) */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ================================================
+   UTILITY CLASSES
+   ================================================ */
+
+/* Image zoom on hover container */
+.img-zoom-container {
+  overflow: hidden;
+}
+.img-zoom-container img {
+  transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.img-zoom-container:hover img {
+  transform: scale(1.03);
+}
+
+/* Noise texture overlay (subtle) */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ================================================
+   IMAGE TREATMENT (team/client photos)
+   ================================================ */
+.team-photo,
+.client-photo {
+  filter: grayscale(60%) contrast(1.1) brightness(1.05);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.team-photo::after,
+.client-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(230, 74, 88, 0.08), transparent);
+  pointer-events: none;
+}
+
+.team-photo:hover,
+.client-photo:hover {
+  filter: grayscale(40%) contrast(1.15) brightness(1.1);
+  transform: scale(1.02);
+}
+
+/* ================================================
+   ACCESSIBILITY
+   ================================================ */
+
+/* Focus states — visible ring on interactive elements */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--color-magnetia-red);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced motion — respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Cursor pointer on clickable elements */
+[role="button"],
+summary,
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* ================================================
+   STACKING CARDS EFFECT (desktop only)
+   Toggle via USE_STACKING in page.tsx
+   @see 12_EFECTO_STACKING_CARDS.md
+   ================================================ */
+.stacking-section {
+  min-height: 100vh;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .stacking-section {
+    position: sticky;
+    top: 0;
+  }
+
+  /* Sections with tall content: internal scroll + sticky headers */
+  .stacking-section--scroll {
+    max-height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .stacking-section--scroll::-webkit-scrollbar {
+    display: none;
+  }
 }

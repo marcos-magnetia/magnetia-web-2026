@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100" fill="none">
+  <!-- Icono megáfono morado -->
+  <g transform="translate(10, 20)">
+    <rect x="0" y="25" width="40" height="30" rx="8" fill="#6C5CE7"/>
+    <path d="M 40 30 L 60 20 L 60 60 L 40 50 Z" fill="#6C5CE7"/>
+    <circle cx="22" cy="40" r="8" fill="#FFFFFF" opacity="0.3"/>
+  </g>
+  <!-- Texto "Smartlead.ai" -->
+  <text x="90" y="60" font-family="Arial, sans-serif" font-weight="700" font-size="42" fill="#0B2558">Smartlead.ai</text>
+</svg>
