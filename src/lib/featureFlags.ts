@@ -15,7 +15,7 @@ export const featureFlags = {
 
   // ── CTAs ──
   ctas: {
-    heroCta: false,              // "Vamos a encontrar los tuyos"
+    heroCta: true,               // "Vamos a encontrar los tuyos" ✅
     metodoCta: true,             // "Agendar sesión" ✅
     serviciosHeaderCta: false,   // "Ver todos los servicios"
     serviciosCardCta: false,     // "Quiero saber más"

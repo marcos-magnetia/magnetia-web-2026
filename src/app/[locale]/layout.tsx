@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { MeshGradientBg } from '@/components/layout/MeshGradientBg'
+import { MobileBottomCTA } from '@/components/ui/MobileBottomCTA'
 import '../globals.css'
 
 const inter = Inter({
@@ -181,6 +182,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               }),
             }}
           />
+
+          {/* Mobile Bottom CTA - Only visible on mobile */}
+          <MobileBottomCTA />
         </NextIntlClientProvider>
       </body>
     </html>
