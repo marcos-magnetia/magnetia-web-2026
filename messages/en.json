@@ -1,0 +1,100 @@
+{
+  "nav": {
+    "cta": "Let's Talk"
+  },
+  "home": {
+    "hero": {
+      "pretitle": "Digital Agency for Client Generation",
+      "headline": "We find the clients your business is looking for. Every time.",
+      "scroll": "Discover how we do it"
+    },
+    "stats": {
+      "stat1_number": "+50",
+      "stat1_label": "companies",
+      "stat1_desc": "we have already helped",
+      "stat2_number": "+60K",
+      "stat2_label": "contacts generated",
+      "stat2_desc": "for our clients",
+      "stat3_number": "100%",
+      "stat3_label": "qualified leads",
+      "stat3_desc": "in every scheduled meeting",
+      "stat4_number": "60%",
+      "stat4_label": "close rate",
+      "stat4_desc": "more than half end in a sale"
+    },
+    "method": {
+      "title": "How we work to help you sell more",
+      "step1_number": "01",
+      "step1_title": "UNDERSTAND YOUR BUSINESS",
+      "step1_text": "We sit down with you. Who is your ideal client? How do you sell today? What have you tried? We design the plan: ads, web, contact prospecting, emails, calls. Only what you truly need. Nothing more, nothing less.",
+      "step2_number": "02",
+      "step2_title": "GET EVERYTHING RUNNING",
+      "step2_text": "We move fast. We build campaigns, websites, automations. We go to market in days, not months. We personalize messaging for your ideal client. And when it works, we scale. We have years of experience, we master the tools, we know what works.",
+      "step3_number": "03",
+      "step3_title": "GENERATE AND QUALIFY",
+      "step3_text": "This is the difference: we are not your typical marketing agency. We live for your sales. We generate contacts. We call them. We engage. We qualify. We help you with your pitch, the call, the close. We have real sales experience. Only people ready to buy reach you.",
+      "step4_number": "04",
+      "step4_title": "MEASURE AND IMPROVE",
+      "step4_text": "Contacts, meetings, closed clients, ROI. We adjust constantly. We are flexible. We master many tools. That is why we are competitive and fast. If something does not work, we pivot. If it works, we accelerate.",
+      "cta_title": "Want to sell more?",
+      "cta_subtitle": "Book your strategy session.",
+      "cta_desc": "We will tell you exactly what we would do in your case. Free. No strings attached.",
+      "cta_button": "Book a session"
+    },
+    "services": {
+      "pretitle": "Our most requested services",
+      "title": "What do you need?",
+      "subtitle": "Not all businesses are the same. Find the solution that fits you best.",
+      "service1_tag": "YOU SELL TO BUSINESSES",
+      "service1_title": "Contact Generation + Commercial Support",
+      "service1_desc": "We build optimized lists of your ideal clients. We design campaigns with personalized emails. We call, qualify, and schedule meetings. We help you close with sharper sales arguments.",
+      "service1_price": "From €397/month",
+      "service2_tag": "YOU SELL TO CONSUMERS",
+      "service2_title": "Qualified Traffic + Web Conversion",
+      "service2_desc": "We generate traffic from people who can actually buy from you. We optimize your website to convert more visitors. We help you improve your offer and close the sale.",
+      "service2_price": "From €297/month",
+      "service3_tag": "YOU WANT TO SELL YOUR SERVICES ONLINE",
+      "service3_title": "We Take Your Services Digital",
+      "service3_desc": "We help you bring your professional services online (not ecommerce). We define the right technology for your case. We set up the full system and support you so you start selling online.",
+      "service3_price": "From €997 per project",
+      "service4_tag": "YOU NEED TO OPTIMIZE YOUR BUSINESS PROCESSES",
+      "service4_title": "Internal Organization + AI Automations",
+      "service4_desc": "We bring order to your business. We optimize commercial and marketing processes with artificial intelligence. We build automations that save time and money. We train your team.",
+      "service4_price": "Custom pricing",
+      "service5_tag": "I WANT TO LEARN AND DO IT MYSELF",
+      "service5_title": "Turnkey Setup + Training",
+      "service5_desc": "We set everything up for you: tools, contact generation campaigns, databases, templates. We train your marketing or sales team. Then you run it all with full autonomy.",
+      "service5_price": "From €997 setup"
+    },
+    "about": {
+      "pretitle": "About us",
+      "title": "Marketing and Sales. One team.",
+      "text": "Marcos (Digital Strategy) and Jorge (B2B Sales): the fusion of two worlds. We met in 2022 and validated a truth: when digital acquisition and commercial closing work together, results skyrocket. No friction, no siloed departments, just real growth. We founded Magnetia to replicate that exact formula inside your business. Our mission is simple: help you generate real conversations with decision-makers who buy. No empty promises, no technical jargon, and a shared obsession with real numbers and measurable growth."
+    },
+    "finalCta": {
+      "title": "Ready to generate qualified clients?",
+      "text": "Book 15 minutes. We analyze your business, identify opportunities, and show you how to get meetings with real decision-makers.",
+      "button": "Book a strategy session",
+      "sub": "Free · No commitment · 15-min video call"
+    }
+  },
+  "contact": {
+    "pretitle": "Strategy Session",
+    "title": "Let's talk about your business",
+    "desc": "Book a Free Strategy Session with us. On this call, we will talk about your business, learn about your goals and current challenges. Together, we will identify the best digital marketing opportunities for your business and outline a custom sales funnel.",
+    "calendar_hint": "Choose the day and time that works best for you.",
+    "step": "Take the first step toward better results, stronger sales, and more clients. We want to help you take your business to the next level.",
+    "direct_pretitle": "Contact",
+    "direct_title": "Get in touch directly",
+    "direct_text": "Maybe you prefer a more direct approach, have specific questions, or simply want to have a conversation about anything. No problem! We are here for you. Reach out through any of the following channels:"
+  },
+  "footer": {
+    "tagline": "Digital Agency for Client Generation",
+    "contact_title": "Contact",
+    "legal_title": "Legal",
+    "legal_notice": "Legal Notice",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "copyright": "© Magnetia 2026 · From Cangas del Narcea to the world"
+  }
+}

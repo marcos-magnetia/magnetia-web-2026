@@ -1,0 +1,100 @@
+{
+  "nav": {
+    "cta": "Hablemos"
+  },
+  "home": {
+    "hero": {
+      "pretitle": "Agencia Digital de Generación de Clientes",
+      "headline": "Buscamos los clientes que está buscando tu negocio y los encontramos, claro",
+      "scroll": "Descubre cómo lo hacemos"
+    },
+    "stats": {
+      "stat1_number": "+50",
+      "stat1_label": "empresas",
+      "stat1_desc": "a las que ya hemos ayudado",
+      "stat2_number": "+60K",
+      "stat2_label": "contactos generados",
+      "stat2_desc": "para nuestros clientes",
+      "stat3_number": "100%",
+      "stat3_label": "leads cualificados",
+      "stat3_desc": "en las reuniones agendadas",
+      "stat4_number": "60%",
+      "stat4_label": "éxito de cierre",
+      "stat4_desc": "más de la mitad terminan en venta"
+    },
+    "method": {
+      "title": "Cómo trabajamos para que vendas más",
+      "step1_number": "01",
+      "step1_title": "ENTENDER TU NEGOCIO",
+      "step1_text": "Nos sentamos contigo. ¿Quién es tu cliente ideal? ¿Cómo vendes ahora? ¿Qué has probado? Diseñamos el plan: anuncios, web, búsqueda de contactos, emails, llamadas. Solo lo que realmente necesites. Ni más ni menos.",
+      "step2_number": "02",
+      "step2_title": "PONER TODO EN MARCHA",
+      "step2_text": "Somos rápidos. Montamos campañas, webs, automatizaciones. Salimos al mercado en días, no meses. Personalizamos los mensajes según tu cliente ideal. Y cuando funciona, escalamos. Llevamos años en esto, dominamos las herramientas, sabemos qué funciona.",
+      "step3_number": "03",
+      "step3_title": "GENERAR Y CUALIFICAR",
+      "step3_text": "Aquí está la diferencia: no somos una agencia de marketing al uso. Vivimos para que vendas. Generamos contactos. Los llamamos. Conversamos. Cualificamos. Te ayudamos con la carta de venta, la llamada, el cierre. Tenemos experiencia comercial. Solo llegan a ti personas listas para comprar.",
+      "step4_number": "04",
+      "step4_title": "MEDIR Y MEJORAR",
+      "step4_text": "Contactos, reuniones, clientes cerrados, ROI. Ajustamos constantemente. Somos flexibles. Dominamos muchas herramientas. Por eso somos competitivos y rápidos. Si algo no funciona, pivotamos. Si funciona, aceleramos.",
+      "cta_title": "¿Quieres vender más?",
+      "cta_subtitle": "Agenda tu sesión estratégica.",
+      "cta_desc": "Te contamos qué haríamos en tu caso. Gratis. Sin compromiso.",
+      "cta_button": "Agendar sesión"
+    },
+    "services": {
+      "pretitle": "Nuestros servicios más demandados",
+      "title": "¿Qué necesitas?",
+      "subtitle": "No todos los negocios son iguales. Encuentra la solución que mejor encaja contigo.",
+      "service1_tag": "VENDES A EMPRESAS",
+      "service1_title": "Generación de Contactos + Acompañamiento Comercial",
+      "service1_desc": "Creamos listas optimizadas de tus clientes ideales. Diseñamos campañas con correos personalizados. Llamamos, cualificamos, agendamos reuniones. Te ayudamos a cerrar con mejores argumentos de venta.",
+      "service1_price": "Desde 397€/mes",
+      "service2_tag": "VENDES A PARTICULARES",
+      "service2_title": "Tráfico Cualificado + Conversión Web",
+      "service2_desc": "Generamos tráfico de gente que realmente puede comprarte. Optimizamos tu web para que conviertan más. Te ayudamos a mejorar la oferta y cerrar la venta.",
+      "service2_price": "Desde 297€/mes",
+      "service3_tag": "QUIERES VENDER TUS SERVICIOS POR INTERNET",
+      "service3_title": "Llevamos tus Servicios a Digital",
+      "service3_desc": "Te ayudamos a llevar tus servicios profesionales a internet (no ecommerce). Definimos qué tecnología es la más adecuada. Montamos todo el sistema y te acompañamos para que empieces a vender online.",
+      "service3_price": "Desde 997€ proyecto",
+      "service4_tag": "NECESITAS OPTIMIZAR PROCESOS EN TU EMPRESA",
+      "service4_title": "Organización Interna + Automatizaciones con IA",
+      "service4_desc": "Traemos orden a tu empresa. Optimizamos procesos comerciales y de marketing con inteligencia artificial. Montamos automatizaciones que ahorran tiempo y dinero. Formamos a tu equipo.",
+      "service4_price": "A medida",
+      "service5_tag": "QUIERO APRENDER Y HACERLO YO MISMO",
+      "service5_title": "Llave en Mano + Formación",
+      "service5_desc": "Te lo montamos todo: herramientas, campañas de generación de contactos, bases de datos, plantillas. Formamos a tu departamento de marketing o comercial. Luego lo ejecutáis con autonomía.",
+      "service5_price": "Desde 997€ setup"
+    },
+    "about": {
+      "pretitle": "Sobre nosotros",
+      "title": "Marketing y Ventas, un solo equipo",
+      "text": "Marcos (Estrategia Digital) y Jorge (Ventas B2B): la fusión de dos mundos. Nos conocimos en 2022 y validamos una realidad: cuando la captación digital y el cierre comercial trabajan juntos, los resultados se disparan. Sin fricción, sin departamentos enfrentados, solo crecimiento real. Fundamos Magnetia para replicar esa fórmula exacta en tu empresa. Nuestra misión es simple: ayudarte a generar conversaciones reales con decisores que compran. Sin promesas vacías, sin jerga técnica y con una obsesión compartida por los números reales y el crecimiento medible."
+    },
+    "finalCta": {
+      "title": "¿Listo para generar clientes cualificados?",
+      "text": "Agenda 15 minutos. Analizamos tu negocio, identificamos oportunidades y te mostramos cómo conseguir reuniones con decisores reales.",
+      "button": "Agendar sesión estratégica",
+      "sub": "Gratis · Sin compromiso · Videollamada de 15 min"
+    }
+  },
+  "contact": {
+    "pretitle": "Sesión Estratégica",
+    "title": "Hablemos de tu negocio",
+    "desc": "Agenda una Sesión Estratégica Gratuita con nosotros. En esta llamada, charlaremos sobre tu negocio, conoceremos tus objetivos y tus desafíos actuales. Juntos, identificaremos las mejores oportunidades de marketing digital para tu negocio y esbozaremos un embudo de ventas a medida.",
+    "calendar_hint": "Elige el día y la hora que más te convengan.",
+    "step": "Da el primer paso para mejorar tus resultados, impulsar tus ventas y ganar más clientes. Queremos ayudarte a llevar tu negocio a lo más alto.",
+    "direct_pretitle": "Contacto",
+    "direct_title": "Contacta directamente con nosotros",
+    "direct_text": "Quizás prefieres un contacto más directo, tienes algunas preguntas específicas o simplemente te gustaría hablar de cualquier cosa. ¡No hay problema! Estamos aquí para ti, puedes ponerte en contacto con nosotros directamente a través de los siguientes medios:"
+  },
+  "footer": {
+    "tagline": "Agencia Digital de Generación de Clientes",
+    "contact_title": "Contacto",
+    "legal_title": "Legal",
+    "legal_notice": "Aviso Legal",
+    "privacy": "Privacidad",
+    "cookies": "Cookies",
+    "copyright": "© Magnetia 2026 · Desde Cangas del Narcea para el mundo"
+  }
+}
