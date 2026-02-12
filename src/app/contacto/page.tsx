@@ -1,6 +1,7 @@
 'use client'
 
 import Script from 'next/script'
+import Image from 'next/image'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 
@@ -122,18 +123,28 @@ export default function Contacto() {
             {/* Right Column - Team Images */}
             <div className="grid grid-cols-2 gap-4">
               <div className="col-span-2">
-                <img
-                  src="/imagenes/fotos/profesional-videollamada-sonriendo.jpeg"
-                  alt="Profesional en videollamada"
-                  className="w-full h-[300px] object-cover shadow-lg"
-                />
+                <div className="relative w-full h-[300px] shadow-lg">
+                  <Image
+                    src="/imagenes/fotos/profesional-videollamada-sonriendo.jpeg"
+                    alt="Profesional en videollamada"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    loading="lazy"
+                  />
+                </div>
               </div>
               <div className="col-span-2">
-                <img
-                  src="/imagenes/fotos/equipo-reunion-tomando-notas.jpeg"
-                  alt="Equipo en reunión tomando notas"
-                  className="w-full h-[300px] object-cover shadow-lg"
-                />
+                <div className="relative w-full h-[300px] shadow-lg">
+                  <Image
+                    src="/imagenes/fotos/equipo-reunion-tomando-notas.jpeg"
+                    alt="Equipo en reunión tomando notas"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
           </div>

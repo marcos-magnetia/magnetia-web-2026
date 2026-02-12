@@ -730,7 +730,7 @@ function VariantI() {
       </motion.div>
 
       {/* Bottom: Single Row Photo Gallery - Editorial Style */}
-      <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-4">
         {photos.map((photo, i) => (
           <motion.div
             key={i}
@@ -746,7 +746,7 @@ function VariantI() {
                 alt={`Equipo Magnetia ${i + 1}`}
                 fill
                 className="object-cover"
-                sizes="(max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 1024px) 100vw, 33vw"
               />
             </div>
           </motion.div>

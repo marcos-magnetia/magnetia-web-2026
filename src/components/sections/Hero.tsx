@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { MagneticButton } from '@/components/ui/MagneticButton'
 import { ease } from '@/lib/animations'
 import { featureFlags } from '@/lib/featureFlags'
@@ -167,14 +168,21 @@ export function Hero() {
       {/* ── Scroll invite: imán → texto → flecha ── */}
       <div className="relative z-10 flex flex-col items-center gap-2 pt-12 pb-16">
         {/* 1. Imán — con sutil balanceo lateral */}
-        <motion.img
-          src="/imagenes/logos/logo solo iman sin fondo.svg"
-          alt="Magnetia"
-          className="w-8 h-8"
+        <motion.div
+          className="relative w-8 h-8"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0, x: [0, 3, -3, 2, 0] }}
           transition={{ duration: 0.6, delay: 4.5, ease, x: { delay: 5.1, duration: 1.2, ease: 'easeInOut' } }}
-        />
+        >
+          <Image
+            src="/imagenes/logos/logo solo iman sin fondo.svg"
+            alt="Magnetia"
+            width={32}
+            height={32}
+            className="w-8 h-8"
+            unoptimized={true}
+          />
+        </motion.div>
 
         {/* 2. Texto */}
         <motion.p

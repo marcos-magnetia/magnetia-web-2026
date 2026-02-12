@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { ease } from '@/lib/animations'
 import { MagneticButton } from '@/components/ui/MagneticButton'
 import { SERVICIOS_LIST, TOOLS_LIST } from '@/lib/constants'
@@ -90,11 +91,16 @@ export function Servicios() {
               {/* Image with overlay (if available) */}
               {hasImage && (
                 <div className="relative mb-5 overflow-hidden shadow-[0_4px_20px_rgba(230,74,88,0.08)]">
-                  <img
-                    src={service.image}
-                    alt={service.serviceName}
-                    className="w-full h-[200px] object-cover"
-                  />
+                  <div className="relative w-full h-[200px]">
+                    <Image
+                      src={service.image!}
+                      alt={service.serviceName}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      loading="lazy"
+                    />
+                  </div>
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
@@ -151,11 +157,16 @@ export function Servicios() {
                 {hasImage && (
                   <div className="shrink-0 pl-6 lg:pl-12 py-8 lg:py-10 flex items-center">
                     <div className="w-[200px] lg:w-[240px] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-shadow duration-500 group-hover:shadow-[0_8px_30px_rgba(230,74,88,0.12)]">
-                      <img
-                        src={service.image}
-                        alt={service.serviceName}
-                        className="w-full h-[140px] lg:h-[160px] object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
+                      <div className="relative w-full h-[140px] lg:h-[160px]">
+                        <Image
+                          src={service.image!}
+                          alt={service.serviceName}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          sizes="240px"
+                          loading="lazy"
+                        />
+                      </div>
                     </div>
                   </div>
                 )}
@@ -250,11 +261,17 @@ export function Servicios() {
                 >
                   {[...TOOLS_LIST, ...TOOLS_LIST].map((tool, i) => (
                     <div key={i} className="flex items-center gap-3 shrink-0">
-                      <img
-                        src={tool.logo}
-                        alt={tool.name}
-                        className="h-7 w-auto grayscale opacity-40"
-                      />
+                      <div className="relative h-7 w-auto">
+                        <Image
+                          src={tool.logo}
+                          alt={tool.name}
+                          width={100}
+                          height={28}
+                          className="h-7 w-auto grayscale opacity-40"
+                          loading="lazy"
+                          unoptimized={true}
+                        />
+                      </div>
                       <span className="text-base font-medium text-magnetia-black/40 whitespace-nowrap">
                         {tool.name}
                       </span>

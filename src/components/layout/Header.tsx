@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -22,10 +23,14 @@ export function Header() {
       <div className="flex items-center justify-between">
         {/* Logo - Clickable to go home */}
         <a href="/" className="flex-shrink-0">
-          <img
+          <Image
             src="/imagenes/logos/magnetia-logo.svg"
             alt="Magnetia"
+            width={180}
+            height={56}
             className="h-14 w-auto"
+            priority={true}
+            unoptimized={true}
           />
         </a>
 
