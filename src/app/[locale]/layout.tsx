@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const isSpanish = locale === 'es';
   const title = isSpanish
     ? 'Magnetia | Agencia Digital de Generación de Clientes B2B'
-    : 'Magnetia | B2B Client Generation Digital Agency';
+    : 'Magnetia | Customer Acquisition Agency';
   const description = isSpanish
     ? 'Agencia especializada en generación de clientes B2B cualificados. Combinamos estrategia digital, captación de contactos y seguimiento personalizado para conseguirte reuniones con decisores reales.'
     : 'Agency specialized in qualified B2B client generation. We combine digital strategy, contact prospecting, and personalized follow-up to get you meetings with real decision-makers.';

@@ -4,10 +4,10 @@
   },
   "home": {
     "hero": {
-      "pretitle": "Digital Agency for Client Generation",
+      "pretitle": "Customer Acquisition Agency",
       "line1": "We find the clients your business is looking for. ",
-      "line2": "Every ",
-      "line3": "time.",
+      "line2": "And we find them, ",
+      "line3": "of course.",
       "cta": "Let's find yours",
       "scroll": "Discover how we do it"
     },
@@ -29,19 +29,19 @@
       "title": "How we work to help you sell more",
       "step1_number": "01",
       "step1_title": "UNDERSTAND YOUR BUSINESS",
-      "step1_text": "We sit down with you. Who is your ideal client? How do you sell today? What have you tried? We design the plan: ads, web, contact prospecting, emails, calls. Only what you truly need. Nothing more, nothing less.",
+      "step1_text": "We sit down with you. Who is your ideal client? How do you sell today? What have you tried? We design the plan: ads, web, lead sourcing, emails, calls. Only what you truly need. Nothing more, nothing less.",
       "step2_number": "02",
-      "step2_title": "GET EVERYTHING RUNNING",
-      "step2_text": "We move fast. We build campaigns, websites, automations. We go to market in days, not months. We personalize messaging for your ideal client. And when it works, we scale. We have years of experience, we master the tools, we know what works.",
+      "step2_title": "LAUNCH & EXECUTE",
+      "step2_text": "We move fast. We build campaigns, websites, automations. We launch in days, not months. We personalize messaging for your ideal client. And when it works, we scale. We have years of experience, we master the tools, we know what works.",
       "step3_number": "03",
-      "step3_title": "GENERATE AND QUALIFY",
-      "step3_text": "This is the difference: we are not your typical marketing agency. We live for your sales. We generate contacts. We call them. We engage. We qualify. We help you with your pitch, the call, the close. We have real sales experience. Only people ready to buy reach you.",
+      "step3_title": "GENERATE & QUALIFY",
+      "step3_text": "This is the difference: we are not your typical marketing agency. We live for your sales. We generate contacts. We call. We engage. We qualify. We help you with the sales script, the call, the close. We have real sales experience. Only people ready to buy reach you.",
       "step4_number": "04",
-      "step4_title": "MEASURE AND IMPROVE",
-      "step4_text": "Contacts, meetings, closed clients, ROI. We adjust constantly. We are flexible. We master many tools. That is why we are competitive and fast. If something does not work, we pivot. If it works, we accelerate.",
+      "step4_title": "MEASURE & IMPROVE",
+      "step4_text": "Contacts, meetings, closed deals, ROI. We adjust constantly. We are flexible. We master many tools. That is why we are competitive and fast. If something doesn't work, we pivot. If it works, we accelerate.",
       "cta_title": "Want to sell more?",
       "cta_subtitle": "Book your strategy session.",
-      "cta_desc": "We will tell you exactly what we would do in your case. Free. No strings attached.",
+      "cta_desc": "We'll tell you exactly what we would do in your case. Free. No strings attached.",
       "cta_button": "Book a session"
     },
     "services": {
@@ -58,27 +58,27 @@
       "service2_price": "From $497/mo",
       "service3_tag": "YOU WANT TO SELL YOUR SERVICES ONLINE",
       "service3_title": "Service Digitization & Funnel Building",
-      "service3_desc": "We help you bring your professional services online (not ecommerce). We define the right technology for your case. We set up the full system and support you so you start selling online.",
+      "service3_desc": "We help you bring your professional services online (non-ecommerce). We define the right technology for your case. We set up the full system and support you so you start selling online.",
       "service3_price": "From $1,497/project",
       "service4_tag": "YOU NEED TO OPTIMIZE YOUR BUSINESS PROCESSES",
       "service4_title": "AI Automation & Workflow Optimization",
-      "service4_desc": "We bring order to your business. We optimize commercial and marketing processes with artificial intelligence. We build automations that save time and money. We train your team.",
+      "service4_desc": "We bring order to your business. We optimize sales and marketing processes with artificial intelligence. We build automations that save time and money. We train your team.",
       "service4_price": "Custom Quote",
       "service5_tag": "I WANT TO LEARN AND DO IT MYSELF",
       "service5_title": "\"Done-With-You\" Setup & Training",
-      "service5_desc": "We set everything up for you: tools, contact generation campaigns, databases, templates. We train your marketing or sales team. Then you run it all with full autonomy.",
+      "service5_desc": "We set everything up for you: tools, lead generation campaigns, databases, templates. We train your marketing or sales team. Then you run it all with full autonomy.",
       "service5_price": "From $1,297/one-time setup"
     },
     "about": {
-      "pretitle": "About us",
+      "pretitle": "About Us",
       "title": "Marketing and Sales, one team",
-      "text": "Marcos (Digital Strategy) and Jorge (Business Development). In 2022 we joined our professional paths and validated a truth: when digital marketing and sales work together, results skyrocket. No friction, no siloed departments, just growth. That's why at Magnetia, technology is not a barrier, it's an accelerator. We implement the most advanced tools on the market, but simplified to be accessible and useful from day one. Our obsession is to remove all the technical noise so you can focus solely on growing your business."
+      "text": "Marcos (Digital Strategy) and Jorge (Business Development). In 2022, we joined our professional paths and validated a truth: when digital marketing and sales work together, results skyrocket. No friction, no siloed departments, just growth. That is why at Magnetia, technology is not a barrier, it is an accelerator. We implement the most advanced tools on the market, but simplified to be accessible and useful from day one. Our obsession is to remove all the technical noise so you can focus solely on growing your business."
     },
     "finalCta": {
       "title": "Ready to generate qualified clients?",
       "text": "Book 15 minutes. We analyze your business, identify opportunities, and show you how to get meetings with real decision-makers.",
-      "button": "Book a strategy session",
-      "sub": "Free · No commitment · 15-min video call"
+      "button": "Book strategy session",
+      "sub": "Free · No strings attached · 15-min video call"
     }
   },
   "contact": {
