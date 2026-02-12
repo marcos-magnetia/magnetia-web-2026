@@ -4,6 +4,10 @@ import { Footer } from '@/components/layout/Footer'
 export const metadata = {
   title: 'Política de Cookies — Magnetia',
   description: 'Información sobre el uso de cookies en el sitio web de Magnetia, S.L.L.',
+  robots: {
+    index: true,
+    follow: false,
+  },
 }
 
 export default function PoliticaDeCookies() {

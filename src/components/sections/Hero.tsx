@@ -176,7 +176,7 @@ export function Hero() {
         >
           <Image
             src="/imagenes/logos/logo solo iman sin fondo.svg"
-            alt="Magnetia"
+            alt="Icono imán de Magnetia"
             width={32}
             height={32}
             className="w-8 h-8"

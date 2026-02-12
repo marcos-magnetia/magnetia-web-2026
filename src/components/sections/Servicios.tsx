@@ -94,7 +94,7 @@ export function Servicios() {
                   <div className="relative w-full h-[200px]">
                     <Image
                       src={service.image!}
-                      alt={service.serviceName}
+                      alt={`Servicio de ${service.serviceName} para ${service.clientType} - Magnetia`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
@@ -160,7 +160,7 @@ export function Servicios() {
                       <div className="relative w-full h-[140px] lg:h-[160px]">
                         <Image
                           src={service.image!}
-                          alt={service.serviceName}
+                          alt={`Servicio de ${service.serviceName} para ${service.clientType} - Magnetia`}
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
                           sizes="240px"

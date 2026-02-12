@@ -4,6 +4,10 @@ import { Footer } from '@/components/layout/Footer'
 export const metadata = {
   title: 'Aviso Legal — Magnetia',
   description: 'Información legal y condiciones de uso del sitio web de Magnetia, S.L.L.',
+  robots: {
+    index: true,
+    follow: false,
+  },
 }
 
 export default function AvisoLegal() {

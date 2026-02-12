@@ -55,7 +55,7 @@ export function Footer({ showCta = true }: FooterProps) {
             <div className="flex flex-col items-center">
               <Image
                 src="/imagenes/logos/magnetia-logo-horizontal-blanco-transparente.png"
-                alt="Magnetia"
+                alt="Magnetia - Agencia Digital de Generación de Clientes B2B"
                 width={200}
                 height={46}
                 className="h-10 w-auto opacity-90 mb-4"

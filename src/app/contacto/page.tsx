@@ -1,9 +1,22 @@
-'use client'
-
 import Script from 'next/script'
 import Image from 'next/image'
+import type { Metadata } from 'next'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+
+export const metadata: Metadata = {
+  title: 'Contacto - Agenda tu Reunión',
+  description: 'Agenda una reunión con nuestro equipo para descubrir cómo podemos ayudarte a generar más clientes B2B cualificados. Consulta gratuita de 30 minutos.',
+  openGraph: {
+    title: 'Contacto - Agenda tu Reunión | Magnetia',
+    description: 'Agenda una reunión con nuestro equipo para descubrir cómo podemos ayudarte a generar más clientes B2B cualificados.',
+    url: 'https://www.magnetia.io/contacto',
+  },
+  twitter: {
+    title: 'Contacto - Agenda tu Reunión | Magnetia',
+    description: 'Agenda una reunión con nuestro equipo. Consulta gratuita de 30 minutos.',
+  },
+}
 
 export default function Contacto() {
   return (
@@ -126,7 +139,7 @@ export default function Contacto() {
                 <div className="relative w-full h-[300px] shadow-lg">
                   <Image
                     src="/imagenes/fotos/profesional-videollamada-sonriendo.jpeg"
-                    alt="Profesional en videollamada"
+                    alt="Profesional de Magnetia en videollamada con cliente sonriendo"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -138,7 +151,7 @@ export default function Contacto() {
                 <div className="relative w-full h-[300px] shadow-lg">
                   <Image
                     src="/imagenes/fotos/equipo-reunion-tomando-notas.jpeg"
-                    alt="Equipo en reunión tomando notas"
+                    alt="Equipo de Magnetia en reunión estratégica tomando notas"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"

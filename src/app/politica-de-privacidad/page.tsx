@@ -4,6 +4,10 @@ import { Footer } from '@/components/layout/Footer'
 export const metadata = {
   title: 'Política de Privacidad — Magnetia',
   description: 'Política de privacidad y protección de datos de Magnetia, S.L.L. conforme al RGPD.',
+  robots: {
+    index: true,
+    follow: false,
+  },
 }
 
 export default function PoliticaDePrivacidad() {

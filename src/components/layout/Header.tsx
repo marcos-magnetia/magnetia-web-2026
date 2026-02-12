@@ -25,7 +25,7 @@ export function Header() {
         <a href="/" className="flex-shrink-0">
           <Image
             src="/imagenes/logos/magnetia-logo.svg"
-            alt="Magnetia"
+            alt="Magnetia - Agencia Digital de Generación de Clientes B2B"
             width={180}
             height={56}
             className="h-14 w-auto"
