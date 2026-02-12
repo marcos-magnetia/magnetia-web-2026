@@ -6,12 +6,19 @@ import { useState, useEffect } from 'react'
 
 export function MobileBottomCTA() {
   const t = useTranslations('nav')
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false) // Empieza oculto
   const [lastScrollY, setLastScrollY] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
+
+      // Solo aparece después de scroll > 700px (después del hero)
+      if (currentScrollY < 700) {
+        setIsVisible(false)
+        setLastScrollY(currentScrollY)
+        return
+      }
 
       // Hide when scrolling down, show when scrolling up
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
@@ -36,11 +43,11 @@ export function MobileBottomCTA() {
         ${isVisible ? 'translate-y-0' : 'translate-y-full'}
       `}
     >
-      {/* Gradient fade effect */}
-      <div className="absolute bottom-full left-0 right-0 h-12 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none" />
+      {/* Gradient fade effect - dark version */}
+      <div className="absolute bottom-full left-0 right-0 h-12 bg-gradient-to-t from-magnetia-black via-magnetia-black/80 to-transparent pointer-events-none" />
 
-      {/* CTA Button Container */}
-      <div className="bg-white border-t border-gray-200 px-5 py-4 shadow-[0_-4px_12px_rgba(0,0,0,0.08)]">
+      {/* CTA Button Container - dark background */}
+      <div className="bg-magnetia-black border-t border-white/10 px-5 py-4 shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
         <Link
           href="/contacto"
           className="
@@ -52,7 +59,7 @@ export function MobileBottomCTA() {
             hover:bg-magnetia-red/90
             active:scale-[0.98]
             transition-all
-            shadow-lg shadow-magnetia-red/25
+            shadow-lg shadow-magnetia-red/40
             uppercase
           "
         >
