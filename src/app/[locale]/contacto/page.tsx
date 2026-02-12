@@ -1,6 +1,7 @@
 import Script from 'next/script'
 import Image from 'next/image'
 import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 
@@ -18,7 +19,9 @@ export const metadata: Metadata = {
   },
 }
 
-export default function Contacto() {
+export default async function Contacto() {
+  const t = await getTranslations('contact')
+  
   return (
     <>
       <Header />
@@ -30,29 +33,17 @@ export default function Contacto() {
             {/* Left Column - Content */}
             <div className="flex flex-col justify-center">
               <span className="text-xs font-semibold text-magnetia-red uppercase tracking-[0.12em] block mb-4">
-                Sesión Estratégica
+                {t('pretitle')}
               </span>
 
               <h1 className="font-bold text-4xl md:text-5xl tracking-tight mb-6">
-                Hablemos de tu negocio
+                {t('title')}
               </h1>
 
               <div className="prose prose-lg text-gray-600 leading-relaxed space-y-4">
-                <p>
-                  Agenda una <strong>Sesión Estratégica Gratuita</strong> con nosotros.
-                </p>
-                <p>
-                  En esta llamada, charlaremos sobre tu negocio, conoceremos tus objetivos y tus desafíos actuales. Juntos, identificaremos las mejores oportunidades de marketing digital para tu negocio y esbozaremos un embudo de ventas a medida.
-                </p>
-                <p>
-                  Elige el día y la hora que más te convengan.
-                </p>
-                <p>
-                  Da el primer paso para mejorar tus resultados, impulsar tus ventas y ganar más clientes.
-                </p>
-                <p className="font-semibold text-magnetia-black">
-                  Queremos ayudarte a llevar tu negocio a lo más alto.
-                </p>
+                <p dangerouslySetInnerHTML={{ __html: t.raw('desc') }} />
+                <p>{t('calendar_hint')}</p>
+                <p>{t('step')}</p>
               </div>
             </div>
 
@@ -79,16 +70,15 @@ export default function Contacto() {
             {/* Left Column - Content */}
             <div>
               <span className="text-xs font-semibold text-magnetia-red uppercase tracking-[0.12em] block mb-4">
-                Contacto
+                {t('direct_pretitle')}
               </span>
 
               <h2 className="font-bold text-3xl md:text-4xl tracking-tight mb-6">
-                Contacta directamente con nosotros
+                {t('direct_title')}
               </h2>
 
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                Quizás prefieres un contacto más directo, tienes algunas preguntas específicas o simplemente te gustaría hablar de cualquier cosa. ¡No hay problema!<br /><br />
-                Estamos aquí para ti, puedes ponerte en contacto con nosotros directamente a través de los siguientes medios:
+                {t('direct_text')}
               </p>
 
               {/* Contact Links */}

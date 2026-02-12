@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { MagneticButton } from '@/components/ui/MagneticButton'
 import { ease } from '@/lib/animations'
 import { featureFlags } from '@/lib/featureFlags'
@@ -26,22 +27,27 @@ import { featureFlags } from '@/lib/featureFlags'
          src/components/ui/icons/HeroMetrics.tsx — disabled for now
    ═══════════════════════════════════════════ */
 
-const HERO_STATS = [
-  { number: '+50', label: 'empresas', sub: 'a las que ya hemos ayudado' },
-  { number: '+60K', label: 'contactos generados', sub: 'para nuestros clientes' },
-  { number: '100%', label: 'leads cualificados', sub: 'en las reuniones agendadas' },
-  { number: '60%', label: 'éxito de cierre', sub: 'más de la mitad terminan en venta' },
-]
 const STAT_BASE_DELAY = 3.2
 const STAT_STAGGER = 0.15
-const LINE1 = 'Buscamos los clientes que está buscando tu negocio'
-const LINE2 = 'y los encontramos, '
-const LINE3 = 'claro'
 
 /* ═══════════════════════════════════════════
    Hero Component
    ═══════════════════════════════════════════ */
 export function Hero() {
+  const t = useTranslations('home')
+  const tStats = useTranslations('home.stats')
+  
+  // Get translated headline (will be split for animation)
+  const headline = t('hero.headline')
+  
+  // Stats from translations
+  const HERO_STATS = [
+    { number: tStats('stat1_number'), label: tStats('stat1_label'), sub: tStats('stat1_desc') },
+    { number: tStats('stat2_number'), label: tStats('stat2_label'), sub: tStats('stat2_desc') },
+    { number: tStats('stat3_number'), label: tStats('stat3_label'), sub: tStats('stat3_desc') },
+    { number: tStats('stat4_number'), label: tStats('stat4_label'), sub: tStats('stat4_desc') },
+  ]
+
   return (
     <section className="relative overflow-hidden" id="hero">
       {/* Mesh Gradient Background */}
@@ -70,43 +76,19 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease }}
           >
-            &bull; Agencia Digital de Generación de Clientes
+            &bull; {t('hero.pretitle')}
           </motion.p>
 
           {/* Title — letter-by-letter with reading rhythm + pauses */}
           <h1 className="font-bold text-[clamp(1.875rem,5vw,4.5rem)] leading-[1.1] tracking-[-0.04em]">
-            {/* Line 1 — black, reading pace */}
-            {Array.from(LINE1).map((char, i) => (
+            {/* Animated headline letter by letter */}
+            {Array.from(headline).map((char, i) => (
               <motion.span
                 key={i}
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.2 + i * 0.016, ease }}
-              >
-                {char}
-              </motion.span>
-            ))}
-            <br />
-            {/* ── pause 0.35s ── then line 2 in red */}
-            {Array.from(LINE2).map((char, i) => (
-              <motion.span
-                key={`r-${i}`}
-                className="text-magnetia-red"
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 1.35 + i * 0.02, ease }}
-              >
-                {char}
-              </motion.span>
-            ))}
-            {/* ── pause 0.45s ── then "claro" slower, accent */}
-            {Array.from(LINE3).map((char, i) => (
-              <motion.span
-                key={`c-${i}`}
-                className="text-magnetia-red"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, delay: 2.2 + i * 0.045, ease }}
+                className={i > headline.length / 2 ? 'text-magnetia-red' : ''}
               >
                 {char}
               </motion.span>
@@ -191,7 +173,7 @@ export function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 4.7, duration: 0.5 }}
         >
-          Descubre cómo lo hacemos
+          {t('hero.scroll')}
         </motion.p>
 
         {/* 3. Flecha — bounce infinito */}

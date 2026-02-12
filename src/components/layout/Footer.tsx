@@ -2,8 +2,10 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { ease } from '@/lib/animations'
 import { MagneticButton } from '@/components/ui/MagneticButton'
+import { Link } from '@/i18n/navigation'
 import { featureFlags } from '@/lib/featureFlags'
 
 interface FooterProps {
@@ -11,6 +13,9 @@ interface FooterProps {
 }
 
 export function Footer({ showCta = true }: FooterProps) {
+  const t = useTranslations('home.finalCta')
+  const tFooter = useTranslations('footer')
+  
   return (
     <footer id="contacto">
       {/* CTA Section — only on home */}
@@ -30,18 +35,17 @@ export function Footer({ showCta = true }: FooterProps) {
               transition={{ duration: 0.5, ease }}
             >
               <h2 className="font-bold text-[1.875rem] md:text-[clamp(2.25rem,5vw,4rem)] tracking-[-0.04em] leading-[1.15] md:leading-[1.1] max-w-4xl px-4">
-                ¿Listo para generar<br />clientes cualificados?
+                {t('title')}
               </h2>
               <p className="text-base md:text-lg lg:text-xl text-magnetia-black/60 max-w-2xl leading-[1.65] md:leading-[1.6] px-4">
-                Agenda 15 minutos. Analizamos tu negocio, identificamos oportunidades
-                y te mostramos cómo conseguir reuniones con decisores reales.
+                {t('text')}
               </p>
               <div className="mt-4">
                 <MagneticButton href="/contacto" size="large">
-                  Agendar sesión estratégica
+                  {t('button')}
                 </MagneticButton>
               </div>
-              <p className="text-xs md:text-sm text-gray-400">Gratis · Sin compromiso · Videollamada de 15 min</p>
+              <p className="text-xs md:text-sm text-gray-400">{t('sub')}</p>
             </motion.div>
           </div>
         </section>
@@ -60,27 +64,27 @@ export function Footer({ showCta = true }: FooterProps) {
                 height={46}
                 className="h-10 w-auto opacity-90 mb-4"
               />
-              <p className="text-sm text-white/50">Agencia Digital de Generación de Clientes</p>
+              <p className="text-sm text-white/50">{tFooter('tagline')}</p>
             </div>
 
             {/* Contact */}
             <div className="flex flex-col gap-2.5 items-center">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-1">Contacto</h4>
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-1">{tFooter('contact_title')}</h4>
               <a href="mailto:hola@magnetia.io" className="text-sm text-white/70 hover:text-white transition-colors">hola@magnetia.io</a>
               <a href="tel:+34634185582" className="text-sm text-white/70 hover:text-white transition-colors">+34 634 185 582</a>
             </div>
 
             {/* Legal */}
             <div className="flex flex-col gap-2.5 items-center">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-1">Legal</h4>
-              <a href="/aviso-legal" className="text-sm text-white/70 hover:text-white transition-colors">Aviso Legal</a>
-              <a href="/politica-de-privacidad" className="text-sm text-white/70 hover:text-white transition-colors">Privacidad</a>
-              <a href="/politica-de-cookies" className="text-sm text-white/70 hover:text-white transition-colors">Cookies</a>
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-1">{tFooter('legal_title')}</h4>
+              <Link href="/aviso-legal" className="text-sm text-white/70 hover:text-white transition-colors">{tFooter('legal_notice')}</Link>
+              <Link href="/politica-de-privacidad" className="text-sm text-white/70 hover:text-white transition-colors">{tFooter('privacy')}</Link>
+              <Link href="/politica-de-cookies" className="text-sm text-white/70 hover:text-white transition-colors">{tFooter('cookies')}</Link>
             </div>
           </div>
 
           <div className="border-t border-white/[0.08] pt-6 text-center">
-            <p className="text-xs text-white/35">&copy; Magnetia 2026 &middot; Desde Cangas del Narcea para el mundo</p>
+            <p className="text-xs text-white/35">{tFooter('copyright')}</p>
           </div>
         </div>
       </div>

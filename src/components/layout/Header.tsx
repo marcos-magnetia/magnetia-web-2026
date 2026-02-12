@@ -2,9 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
+  const t = useTranslations('nav')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -22,7 +25,7 @@ export function Header() {
     >
       <div className="flex items-center justify-between">
         {/* Logo - Clickable to go home */}
-        <a href="/" className="flex-shrink-0">
+        <Link href="/" className="flex-shrink-0">
           <Image
             src="/imagenes/logos/magnetia-logo.svg"
             alt="Magnetia - Agencia Digital de Generación de Clientes B2B"
@@ -32,15 +35,15 @@ export function Header() {
             priority={true}
             unoptimized={true}
           />
-        </a>
+        </Link>
 
         {/* CTA Button - Visible on all screen sizes */}
-        <a
+        <Link
           href="/contacto"
           className="bg-magnetia-red text-white px-4 py-2 md:px-6 md:py-2.5 rounded-[10px] text-xs md:text-sm font-semibold hover:-translate-y-0.5 hover:shadow-lg transition-all uppercase"
         >
-          Hablemos
-        </a>
+          {t('cta')}
+        </Link>
       </div>
     </header>
   )
