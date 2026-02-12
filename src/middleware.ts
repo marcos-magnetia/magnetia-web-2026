@@ -10,5 +10,6 @@ export default createMiddleware({
 });
 
 export const config = {
-  matcher: ['/((?!_next|_vercel|.*\\..*).*)']
+  // Exclude /studio (Sanity CMS), /api, /_next, /_vercel, and files with extensions
+  matcher: ['/((?!api|studio|_next|_vercel|.*\\..*).*)']
 };
