@@ -148,10 +148,10 @@ export function Servicios() {
 
                   {/* Title over image */}
                   <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <span className="block text-[13px] font-bold text-white uppercase tracking-[0.08em] mb-1.5">
+                    <span className="block text-lg font-bold text-white uppercase tracking-[0.08em] mb-2">
                       {service.clientType}
                     </span>
-                    <h3 className="text-lg font-semibold leading-tight tracking-tight text-white">
+                    <h3 className="text-base font-semibold leading-tight tracking-tight text-white">
                       {service.serviceName}
                     </h3>
                   </div>
@@ -161,10 +161,10 @@ export function Servicios() {
               {/* If no image, show title normally */}
               {!hasImage && (
                 <div className="mb-4">
-                  <span className="text-[13px] font-bold text-magnetia-black uppercase tracking-[0.04em] block mb-2">
+                  <span className="text-lg font-bold text-magnetia-black uppercase tracking-[0.04em] block mb-2">
                     {service.clientType}
                   </span>
-                  <h3 className="text-lg font-semibold leading-snug tracking-tight text-magnetia-black">
+                  <h3 className="text-base font-semibold leading-snug tracking-tight text-magnetia-black">
                     {service.serviceName}
                   </h3>
                 </div>
