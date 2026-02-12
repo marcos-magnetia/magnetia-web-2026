@@ -107,7 +107,7 @@ export const SERVICIOS_LIST: ServiceRowData[] = [
     serviceName: 'Generación de Contactos + Acompañamiento Comercial',
     price: '397€/mes',
     description: 'Creamos listas optimizadas de tus clientes ideales. Diseñamos campañas con correos personalizados. Llamamos, cualificamos, agendamos reuniones. Te ayudamos a cerrar con mejores argumentos de venta.',
-    image: '/imagenes/fotos servicios/servicio-01-empresas.jpg',
+    image: '/imagenes/fotos-servicios/servicio-01-empresas.jpg',
     imagePlaceholder: 'Sobre + Sello',
   },
   {
@@ -115,7 +115,7 @@ export const SERVICIOS_LIST: ServiceRowData[] = [
     serviceName: 'Tráfico Cualificado + Conversión Web',
     price: '297€/mes',
     description: 'Generamos tráfico de gente que realmente puede comprarte. Optimizamos tu web para que conviertan más. Te ayudamos a mejorar la oferta y cerrar la venta.',
-    image: '/imagenes/fotos servicios/servicio-02-particulares.jpg',
+    image: '/imagenes/fotos-servicios/servicio-02-particulares.jpg',
     imagePlaceholder: 'Megáfono',
   },
   {
@@ -123,7 +123,7 @@ export const SERVICIOS_LIST: ServiceRowData[] = [
     serviceName: 'Llevamos tus Servicios a Digital',
     price: '997€ proyecto',
     description: 'Te ayudamos a llevar tus servicios profesionales a internet (no ecommerce). Definimos qué tecnología es la más adecuada. Montamos todo el sistema y te acompañamos para que empieces a vender online.',
-    image: '/imagenes/fotos servicios/servicio-03-digital.jpg',
+    image: '/imagenes/fotos-servicios/servicio-03-digital.jpg',
     imagePlaceholder: 'Brújula',
   },
   {
@@ -131,7 +131,7 @@ export const SERVICIOS_LIST: ServiceRowData[] = [
     serviceName: 'Organización Interna + Automatizaciones con IA',
     price: 'A medida',
     description: 'Traemos orden a tu empresa. Optimizamos procesos comerciales y de marketing con inteligencia artificial. Montamos automatizaciones que ahorran tiempo y dinero. Formamos a tu equipo.',
-    image: '/imagenes/fotos servicios/servicio-04-procesos.png',
+    image: '/imagenes/fotos-servicios/servicio-04-procesos.png',
     imagePlaceholder: 'Puzzle',
   },
   {
@@ -139,7 +139,7 @@ export const SERVICIOS_LIST: ServiceRowData[] = [
     serviceName: 'Llave en Mano + Formación',
     price: '997€ setup',
     description: 'Te lo montamos todo: herramientas, campañas de generación de contactos, bases de datos, plantillas. Formamos a tu departamento de marketing o comercial. Luego lo ejecutáis con autonomía.',
-    image: '/imagenes/fotos servicios/servicio-05-llaveenmani-version-2.jpg',
+    image: '/imagenes/fotos-servicios/servicio-05-llaveenmani-version-2.jpg',
     imagePlaceholder: 'Llave',
   },
 ]
