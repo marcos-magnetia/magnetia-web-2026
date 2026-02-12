@@ -22,17 +22,28 @@ type Props = {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  
+
+  const isSpanish = locale === 'es';
+  const title = isSpanish
+    ? 'Magnetia | Agencia Digital de Generación de Clientes B2B'
+    : 'Magnetia | B2B Client Generation Digital Agency';
+  const description = isSpanish
+    ? 'Agencia especializada en generación de clientes B2B cualificados. Combinamos estrategia digital, captación de contactos y seguimiento personalizado para conseguirte reuniones con decisores reales.'
+    : 'Agency specialized in qualified B2B client generation. We combine digital strategy, contact prospecting, and personalized follow-up to get you meetings with real decision-makers.';
+  const keywords = isSpanish
+    ? ['generación de leads', 'leads B2B', 'captación de clientes', 'agencia digital', 'marketing B2B', 'automatización marketing', 'inteligencia artificial', 'prospección comercial', 'contactos cualificados']
+    : ['lead generation', 'B2B leads', 'client acquisition', 'digital agency', 'B2B marketing', 'marketing automation', 'artificial intelligence', 'commercial prospecting', 'qualified contacts'];
+
   return {
     metadataBase: new URL('https://www.magnetia.io'),
 
     // SEO Básico
     title: {
-      default: 'Magnetia | Agencia Digital de Generación de Clientes B2B',
+      default: title,
       template: '%s | Magnetia'
     },
-    description: 'Agencia especializada en generación de clientes B2B cualificados. Combinamos estrategia digital, captación de contactos y seguimiento personalizado para conseguirte reuniones con decisores reales.',
-    keywords: ['generación de leads', 'leads B2B', 'captación de clientes', 'agencia digital', 'marketing B2B', 'automatización marketing', 'inteligencia artificial', 'prospección comercial', 'contactos cualificados'],
+    description,
+    keywords,
 
     // Autor y creator
     authors: [{ name: 'Magnetia', url: 'https://www.magnetia.io' }],
@@ -62,17 +73,19 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     // OpenGraph completo
     openGraph: {
       type: 'website',
-      locale: locale === 'es' ? 'es_ES' : 'en_US',
-      url: locale === 'es' ? 'https://www.magnetia.io' : 'https://www.magnetia.io/en',
+      locale: isSpanish ? 'es_ES' : 'en_US',
+      url: isSpanish ? 'https://www.magnetia.io' : 'https://www.magnetia.io/en',
       siteName: 'Magnetia',
-      title: 'Magnetia | Agencia Digital de Generación de Clientes B2B',
-      description: 'Agencia especializada en generación de clientes B2B cualificados. Combinamos estrategia digital, captación de contactos y seguimiento personalizado para conseguirte reuniones con decisores reales.',
+      title,
+      description,
       images: [
         {
           url: '/imagenes/logos/magnetia-logo-completo-blanco-fondo-rojo.png',
           width: 1200,
           height: 630,
-          alt: 'Magnetia - Agencia de Generación de Clientes',
+          alt: isSpanish
+            ? 'Magnetia - Agencia de Generación de Clientes'
+            : 'Magnetia - Client Generation Agency',
         }
       ],
     },
@@ -80,8 +93,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     // Twitter Card
     twitter: {
       card: 'summary_large_image',
-      title: 'Magnetia | Agencia Digital de Generación de Clientes B2B',
-      description: 'Agencia especializada en generación de clientes B2B cualificados. Combinamos estrategia digital, captación de contactos y seguimiento personalizado.',
+      title,
+      description,
       images: ['/imagenes/logos/magnetia-logo-completo-blanco-fondo-rojo.png'],
     },
 
@@ -95,11 +108,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
     // hreflang for SEO
     alternates: {
-      canonical: locale === 'es' ? 'https://www.magnetia.io' : 'https://www.magnetia.io/en',
+      canonical: isSpanish ? 'https://www.magnetia.io' : 'https://www.magnetia.io/en',
       languages: {
         'es': 'https://www.magnetia.io',
         'en': 'https://www.magnetia.io/en',
-        'x-default': 'https://www.magnetia.io/en',
+        'x-default': 'https://www.magnetia.io', // Default to Spanish
       },
     },
   }
@@ -114,14 +127,14 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} className={inter.variable}>
-      <Script id="google-tag-manager" strategy="beforeInteractive">
-        {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      <body className={`${inter.className} antialiased`}>
+        <Script id="google-tag-manager" strategy="beforeInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-WKMPKX6');`}
-      </Script>
-      <body className={`${inter.className} antialiased`}>
+        </Script>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-WKMPKX6"
@@ -144,12 +157,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 '@id': 'https://www.magnetia.io',
                 name: 'Magnetia',
                 alternateName: 'Magnetia S.L.L.',
-                url: 'https://www.magnetia.io',
+                url: locale === 'es' ? 'https://www.magnetia.io' : 'https://www.magnetia.io/en',
                 logo: 'https://www.magnetia.io/imagenes/logos/magnetia-logo.svg',
-                description: 'Agencia especializada en generación de clientes B2B cualificados. Combinamos estrategia digital, captación de contactos y seguimiento personalizado.',
+                description: locale === 'es'
+                  ? 'Agencia especializada en generación de clientes B2B cualificados. Combinamos estrategia digital, captación de contactos y seguimiento personalizado.'
+                  : 'Agency specialized in qualified B2B client generation. We combine digital strategy, contact prospecting, and personalized follow-up.',
                 email: 'hola@magnetia.io',
-                areaServed: 'ES',
-                knowsLanguage: locale === 'es' ? 'es' : 'en',
+                areaServed: ['ES', 'EU', 'GB', 'US'],
+                knowsLanguage: ['es', 'en'],
+                inLanguage: locale === 'es' ? 'es' : 'en',
                 priceRange: '€€',
                 aggregateRating: {
                   '@type': 'AggregateRating',
@@ -160,7 +176,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   '@type': 'ContactPoint',
                   contactType: 'Customer Service',
                   email: 'hola@magnetia.io',
-                  availableLanguage: locale === 'es' ? 'Spanish' : 'English',
+                  availableLanguage: ['Spanish', 'English'],
                 },
               }),
             }}

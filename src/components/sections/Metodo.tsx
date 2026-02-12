@@ -1,11 +1,37 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { ease } from '@/lib/animations'
 import { MagneticButton } from '@/components/ui/MagneticButton'
-import { METODO_STEPS } from '@/lib/constants'
 
 export function Metodo() {
+  const t = useTranslations('home.method')
+
+  // Build steps array from translations
+  const METODO_STEPS = [
+    {
+      num: t('step1_number'),
+      title: t('step1_title'),
+      desc: t('step1_text'),
+    },
+    {
+      num: t('step2_number'),
+      title: t('step2_title'),
+      desc: t('step2_text'),
+    },
+    {
+      num: t('step3_number'),
+      title: t('step3_title'),
+      desc: t('step3_text'),
+    },
+    {
+      num: t('step4_number'),
+      title: t('step4_title'),
+      desc: t('step4_text'),
+    },
+  ]
+
   return (
     <section
       className="bg-magnetia-black noise-overlay relative"
@@ -22,7 +48,7 @@ export function Metodo() {
             transition={{ duration: 0.5, ease }}
           >
             <h2 className="text-white font-bold text-[clamp(2rem,4vw,3rem)] tracking-[-0.04em] leading-[1.1] uppercase">
-              Cómo trabajamos para que vendas más
+              {t('title')}
             </h2>
           </motion.div>
 
@@ -60,17 +86,16 @@ export function Metodo() {
             transition={{ duration: 0.5, ease }}
           >
             <p className="text-white/70 text-base leading-relaxed mb-1">
-              ¿Quieres vender más?
+              {t('cta_title')}
             </p>
             <p className="text-white font-bold text-lg mb-1">
-              Agenda tu sesión estratégica.
+              {t('cta_subtitle')}
             </p>
             <p className="text-white/50 text-sm mb-6">
-              Te contamos qué haríamos en tu caso.<br />
-              Gratis. Sin compromiso.
+              {t('cta_desc')}
             </p>
             <MagneticButton href="/contacto" >
-              <span>Agendar sesión</span>
+              {t('cta_button')}
             </MagneticButton>
           </motion.div>
         </div>
@@ -88,22 +113,21 @@ export function Metodo() {
                 transition={{ duration: 0.5, ease }}
               >
                 <h2 className="text-white font-bold text-[clamp(2rem,4vw,3rem)] tracking-[-0.04em] leading-[1.1] uppercase">
-                  Cómo trabajamos para que vendas más
+                  {t('title')}
                 </h2>
                 <div className="w-12 h-0.5 bg-magnetia-red/30 mt-8 mb-10" />
 
                 <p className="text-white/70 text-base leading-relaxed mb-1">
-                  ¿Quieres vender más?
+                  {t('cta_title')}
                 </p>
                 <p className="text-white font-bold text-lg mb-1">
-                  Agenda tu sesión estratégica.
+                  {t('cta_subtitle')}
                 </p>
                 <p className="text-white/40 text-sm leading-relaxed mb-6">
-                  Te contamos qué haríamos en tu caso.<br />
-                  Gratis. Sin compromiso.
+                  {t('cta_desc')}
                 </p>
                 <MagneticButton href="/contacto" >
-                  <span>Agendar sesión</span>
+                  {t('cta_button')}
                 </MagneticButton>
               </motion.div>
             </div>

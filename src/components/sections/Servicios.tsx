@@ -2,12 +2,54 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { ease } from '@/lib/animations'
 import { MagneticButton } from '@/components/ui/MagneticButton'
-import { SERVICIOS_LIST, TOOLS_LIST } from '@/lib/constants'
+import { TOOLS_LIST } from '@/lib/constants'
 import { featureFlags } from '@/lib/featureFlags'
 
 export function Servicios() {
+  const t = useTranslations('home.services')
+
+  // Build services array from translations
+  const SERVICIOS_LIST = [
+    {
+      clientType: t('service1_tag'),
+      serviceName: t('service1_title'),
+      description: t('service1_desc'),
+      price: t('service1_price'),
+      image: '/imagenes/fotos-servicios/servicio-01-empresas.jpg',
+    },
+    {
+      clientType: t('service2_tag'),
+      serviceName: t('service2_title'),
+      description: t('service2_desc'),
+      price: t('service2_price'),
+      image: '/imagenes/fotos-servicios/servicio-02-particulares.jpg',
+    },
+    {
+      clientType: t('service3_tag'),
+      serviceName: t('service3_title'),
+      description: t('service3_desc'),
+      price: t('service3_price'),
+      image: '/imagenes/fotos-servicios/servicio-03-digital.jpg',
+    },
+    {
+      clientType: t('service4_tag'),
+      serviceName: t('service4_title'),
+      description: t('service4_desc'),
+      price: t('service4_price'),
+      image: '/imagenes/fotos-servicios/servicios-04-procesos-v2.jpg',
+    },
+    {
+      clientType: t('service5_tag'),
+      serviceName: t('service5_title'),
+      description: t('service5_desc'),
+      price: t('service5_price'),
+      image: '/imagenes/fotos-servicios/servicio-05-llaveenmani-version-2.jpg',
+    },
+  ]
+
   return (
     <section className="relative bg-white" id="servicios">
       {/* ── Top gradient — inverse, eases transition from dark Método ── */}
@@ -27,13 +69,13 @@ export function Servicios() {
           transition={{ duration: 0.5, ease }}
         >
           <span className="text-[11px] font-semibold text-magnetia-red uppercase tracking-[0.12em] block mb-4">
-            Nuestros servicios más demandados
+            {t('pretitle')}
           </span>
           <h2 className="font-bold text-[2rem] tracking-[-0.04em] leading-[1.1] mb-4">
-            ¿Qué necesitas?
+            {t('title')}
           </h2>
           <p className="text-sm text-magnetia-black/50 leading-relaxed mb-6">
-            No todos los negocios son iguales. Encuentra la solución que mejor encaja contigo.
+            {t('subtitle')}
           </p>
           {featureFlags.ctas.serviciosHeaderCta && (
             <MagneticButton href="#contacto" size="small" dark>
@@ -51,14 +93,14 @@ export function Servicios() {
           transition={{ duration: 0.5, ease }}
         >
           <span className="text-xs font-semibold text-magnetia-red uppercase tracking-[0.12em] block mb-5">
-            Nuestros servicios más demandados
+            {t('pretitle')}
           </span>
           <h2 className="font-bold text-[clamp(2.5rem,5vw,4rem)] tracking-[-0.04em] leading-[1.05]">
-            ¿Qué necesitas?
+            {t('title')}
           </h2>
           <div className="flex items-center justify-between gap-8 mt-4">
             <p className="text-base text-magnetia-black/60 leading-[1.6]">
-              No todos los negocios son iguales. Encuentra la solución que mejor encaja contigo.
+              {t('subtitle')}
             </p>
             {featureFlags.ctas.serviciosHeaderCta && (
               <MagneticButton href="#contacto" size="small" dark className="shrink-0">

@@ -34,12 +34,14 @@ const STAT_STAGGER = 0.15
    Hero Component
    ═══════════════════════════════════════════ */
 export function Hero() {
-  const t = useTranslations('home')
+  const t = useTranslations('home.hero')
   const tStats = useTranslations('home.stats')
-  
-  // Get translated headline (will be split for animation)
-  const headline = t('hero.headline')
-  
+
+  // Get translated lines for animation
+  const LINE1 = t('line1')
+  const LINE2 = t('line2')
+  const LINE3 = t('line3')
+
   // Stats from translations
   const HERO_STATS = [
     { number: tStats('stat1_number'), label: tStats('stat1_label'), sub: tStats('stat1_desc') },
@@ -76,19 +78,43 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease }}
           >
-            &bull; {t('hero.pretitle')}
+            &bull; {t('pretitle')}
           </motion.p>
 
           {/* Title — letter-by-letter with reading rhythm + pauses */}
           <h1 className="font-bold text-[clamp(1.875rem,5vw,4.5rem)] leading-[1.1] tracking-[-0.04em]">
-            {/* Animated headline letter by letter */}
-            {Array.from(headline).map((char, i) => (
+            {/* Line 1 — black, reading pace */}
+            {Array.from(LINE1).map((char, i) => (
               <motion.span
                 key={i}
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.2 + i * 0.016, ease }}
-                className={i > headline.length / 2 ? 'text-magnetia-red' : ''}
+              >
+                {char}
+              </motion.span>
+            ))}
+            <br />
+            {/* ── pause 0.35s ── then line 2 in red */}
+            {Array.from(LINE2).map((char, i) => (
+              <motion.span
+                key={`r-${i}`}
+                className="text-magnetia-red"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 1.35 + i * 0.02, ease }}
+              >
+                {char}
+              </motion.span>
+            ))}
+            {/* ── pause 0.45s ── then "claro" slower, accent */}
+            {Array.from(LINE3).map((char, i) => (
+              <motion.span
+                key={`c-${i}`}
+                className="text-magnetia-red"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: 2.2 + i * 0.045, ease }}
               >
                 {char}
               </motion.span>
@@ -103,7 +129,7 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 2.8, ease }}
             >
               <MagneticButton href="/contacto">
-                <span>Vamos a encontrar los tuyos</span>
+                {t('cta')}
               </MagneticButton>
             </motion.div>
           )}
@@ -173,7 +199,7 @@ export function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 4.7, duration: 0.5 }}
         >
-          {t('hero.scroll')}
+          {t('scroll')}
         </motion.p>
 
         {/* 3. Flecha — bounce infinito */}

@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { ease } from '@/lib/animations'
 import Image from 'next/image'
 import { MagneticButton } from '@/components/ui/MagneticButton'
@@ -10,25 +11,22 @@ interface AboutProps {
   variant?: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I'
 }
 
-/* ── Content Data ── */
-const content = {
-  eyebrow: 'Sobre nosotros',
-  title: 'Tres obsesionados con cerrar ventas B2B',
-  paragraphs: [
-    'Somos tres obsesionados con encontrar clientes que realmente cierren.',
-    'No creemos en el marketing de humo. Creemos en números, en conversaciones reales, en emails que abren puertas. En llamadas que terminan en reuniones. En reuniones que terminan en contratos.',
-    'Fundamos Magnetia porque vimos que las empresas B2B necesitaban algo más que "leads": necesitaban conversaciones cualificadas con decisores reales. Y eso es exactamente lo que hacemos, día a día, para cada cliente.'
-  ]
-}
+/* ── Helper to split text into paragraphs by sentences ── */
+function splitTextIntoParagraphs(text: string) {
+  // Split by periods followed by space and capital letter
+  const sentences = text.match(/[^.!?]+[.!?]+/g) || [text]
 
-/* ── Content Data Variante E (Historia Compacta) ── */
-const contentE = {
-  eyebrow: 'Sobre nosotros',
-  title: 'Marketing y Ventas, un solo equipo',
-  intro: 'Marcos (Estrategia Digital) y Jorge (Ventas B2B): la fusión de dos mundos.',
-  paragraph1: 'Nos conocimos en 2022 y validamos una realidad: cuando la captación digital y el cierre comercial trabajan juntos, los resultados se disparan. Sin fricción, sin departamentos enfrentados, solo crecimiento real.',
-  paragraph2: 'Fundamos Magnetia para replicar esa fórmula exacta en tu empresa. Nuestra misión es simple: ayudarte a generar conversaciones reales con decisores que compran. Sin promesas vacías, sin jerga técnica y con una obsesión compartida por los números reales y el crecimiento medible.',
-  cta: 'Conoce nuestra historia completa'
+  // First sentence is intro
+  const intro = sentences[0]?.trim() || ''
+
+  // Middle sentences become paragraph1
+  const midPoint = Math.ceil(sentences.length / 2)
+  const paragraph1 = sentences.slice(1, midPoint).join(' ').trim()
+
+  // Remaining sentences become paragraph2
+  const paragraph2 = sentences.slice(midPoint).join(' ').trim()
+
+  return { intro, paragraph1, paragraph2 }
 }
 
 /* ── Photo Arrays ── */
@@ -60,6 +58,31 @@ const photos = {
 
 /* ── Main Component ── */
 export function About({ variant = 'I' }: AboutProps) {
+  const t = useTranslations('home.about')
+
+  // Build content from translations
+  const fullText = t('text')
+  const { intro, paragraph1, paragraph2 } = splitTextIntoParagraphs(fullText)
+
+  const content = {
+    eyebrow: t('pretitle'),
+    title: t('title'),
+    paragraphs: [
+      intro,
+      paragraph1,
+      paragraph2
+    ]
+  }
+
+  const contentE = {
+    eyebrow: t('pretitle'),
+    title: t('title'),
+    intro,
+    paragraph1,
+    paragraph2,
+    cta: 'Conoce nuestra historia completa' // Keep hardcoded for now as no translation exists
+  }
+
   return (
     <section
       className="relative py-[100px] md:py-[140px]"
@@ -83,11 +106,11 @@ export function About({ variant = 'I' }: AboutProps) {
         {variant === 'B' && <VariantB content={content} photos={photos.variantB} />}
         {variant === 'C' && <VariantC content={content} photos={photos.variantC} />}
         {variant === 'D' && <VariantD content={content} photos={photos.variantD} />}
-        {variant === 'E' && <VariantE />}
-        {variant === 'F' && <VariantF />}
-        {variant === 'G' && <VariantG />}
-        {variant === 'H' && <VariantH />}
-        {variant === 'I' && <VariantI />}
+        {variant === 'E' && <VariantE contentE={contentE} />}
+        {variant === 'F' && <VariantF contentE={contentE} />}
+        {variant === 'G' && <VariantG contentE={contentE} />}
+        {variant === 'H' && <VariantH contentE={contentE} />}
+        {variant === 'I' && <VariantI contentE={contentE} />}
       </div>
     </section>
   )
@@ -362,7 +385,18 @@ function VariantD({ content, photos }: VariantProps) {
 }
 
 /* ── Variant E: Compact Hero (Photo + Text Side by Side) ── */
-function VariantE() {
+interface VariantEProps {
+  contentE: {
+    eyebrow: string
+    title: string
+    intro: string
+    paragraph1: string
+    paragraph2: string
+    cta: string
+  }
+}
+
+function VariantE({ contentE }: VariantEProps) {
   return (
     <motion.div
       className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center"
@@ -436,7 +470,7 @@ function VariantE() {
 }
 
 /* ── Variant F: Grid 2x2 + Text Side-by-Side (Neo-Suizo) ── */
-function VariantF() {
+function VariantF({ contentE }: VariantEProps) {
   const photos = [
     '/imagenes/fotos/equipo-fundadores-sofa-relajados-riendo.jpeg',
     '/imagenes/fotos/equipo-fundadores-vista-cenital-oficina.jpeg',
@@ -516,7 +550,7 @@ function VariantF() {
 }
 
 /* ── Variant G: Grid 3x2 + Text Side-by-Side (Neo-Suizo) ── */
-function VariantG() {
+function VariantG({ contentE }: VariantEProps) {
   const photos = [
     '/imagenes/fotos/equipo-fundadores-sofa-relajados-riendo.jpeg',
     '/imagenes/fotos/equipo-fundadores-vista-cenital-oficina.jpeg',
@@ -598,7 +632,7 @@ function VariantG() {
 }
 
 /* ── Variant H: Centered Text + Large Grid (Neo-Suizo) ── */
-function VariantH() {
+function VariantH({ contentE }: VariantEProps) {
   const photos = [
     '/imagenes/fotos/equipo-fundadores-sofa-relajados-riendo.jpeg',
     '/imagenes/fotos/equipo-fundadores-vista-cenital-oficina.jpeg',
@@ -680,7 +714,7 @@ function VariantH() {
 }
 
 /* ── Variant I: Editorial Magazine Style (2-Column Text + Mixed Photo Gallery) ── */
-function VariantI() {
+function VariantI({ contentE }: VariantEProps) {
   const photos = [
     '/imagenes/fotos/equipo-fundadores-oficina-sonriendo.jpeg',
     '/imagenes/fotos/reunion-cliente-laptop-equipo-riendo.jpeg',

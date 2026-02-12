@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
+import { LanguageSelector } from '@/components/ui/LanguageSelector'
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -37,13 +38,19 @@ export function Header() {
           />
         </Link>
 
-        {/* CTA Button - Visible on all screen sizes */}
-        <Link
-          href="/contacto"
-          className="bg-magnetia-red text-white px-4 py-2 md:px-6 md:py-2.5 rounded-[10px] text-xs md:text-sm font-semibold hover:-translate-y-0.5 hover:shadow-lg transition-all uppercase"
-        >
-          {t('cta')}
-        </Link>
+        {/* Right side: Language Selector + CTA */}
+        <div className="flex items-center gap-4 md:gap-6">
+          {/* Language Selector */}
+          <LanguageSelector />
+
+          {/* CTA Button - Visible on all screen sizes */}
+          <Link
+            href="/contacto"
+            className="bg-magnetia-red text-white px-4 py-2 md:px-6 md:py-2.5 rounded-[10px] text-xs md:text-sm font-semibold hover:-translate-y-0.5 hover:shadow-lg transition-all uppercase"
+          >
+            {t('cta')}
+          </Link>
+        </div>
       </div>
     </header>
   )

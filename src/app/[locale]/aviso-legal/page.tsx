@@ -1,138 +1,166 @@
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { getTranslations } from 'next-intl/server'
+import type { Metadata } from 'next'
+import { Link } from '@/i18n/navigation'
 
-export const metadata = {
-  title: 'Aviso Legal — Magnetia',
-  description: 'Información legal y condiciones de uso del sitio web de Magnetia, S.L.L.',
-  robots: {
-    index: true,
-    follow: false,
-  },
+type Props = {
+  params: Promise<{ locale: string }>
 }
 
-export default function AvisoLegal() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'legalNotice' })
+
+  const baseUrl = 'https://www.magnetia.io'
+  const path = locale === 'es' ? '/aviso-legal' : '/en/legal-notice'
+
+  return {
+    title: `${t('title')} — Magnetia`,
+    description: locale === 'es'
+      ? 'Información legal y condiciones de uso del sitio web de Magnetia, S.L.L.'
+      : 'Legal information and terms of use of the Magnetia, S.L.L. website.',
+    robots: {
+      index: true,
+      follow: false,
+    },
+    alternates: {
+      canonical: `${baseUrl}${path}`,
+      languages: {
+        'es': `${baseUrl}/aviso-legal`,
+        'en': `${baseUrl}/en/legal-notice`,
+        'x-default': `${baseUrl}/aviso-legal`,
+      },
+    },
+  }
+}
+
+export default async function AvisoLegal({ params }: Props) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'legalNotice' })
+
   return (
     <>
       <Header />
       <main className="pt-32 pb-20 px-5 lg:px-10">
         <div className="max-w-[800px] mx-auto prose prose-gray">
-          <h1 className="font-bold text-4xl tracking-tight mb-8 text-magnetia-black">Aviso Legal</h1>
+          <h1 className="font-bold text-4xl tracking-tight mb-8 text-magnetia-black">{t('title')}</h1>
 
           <p className="text-gray-600 mb-8 leading-relaxed">
-            Última actualización: 10 de febrero de 2026
+            {t('lastUpdated')}
           </p>
 
           {/* Datos Identificativos */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            1. Datos Identificativos
+            {t('section1_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico, se informa de los siguientes datos:
+            {t('section1_intro')}
           </p>
           <ul className="text-gray-600 mb-4 space-y-2">
-            <li><strong>Titular:</strong> Magnetia, S.L.L.</li>
-            <li><strong>CIF:</strong> B44693810</li>
-            <li><strong>Domicilio social:</strong> Calle Pelayo 8, 1ºB, 33800 Cangas del Narcea, Asturias, España</li>
-            <li><strong>Email:</strong> <a href="mailto:hola@magnetia.io" className="text-magnetia-red hover:underline">hola@magnetia.io</a></li>
-            <li><strong>Teléfono:</strong> <a href="tel:+34634185582" className="text-magnetia-red hover:underline">(+34) 634 18 55 82</a></li>
-            <li><strong>Registro Mercantil:</strong> Asturias, Tomo 4535, Libro 0, Folio 49, Sección 8ª, Hoja AS-61406, Inscripción 1ª</li>
+            <li><strong>{t('section1_holder')}:</strong> {t('section1_holder_value')}</li>
+            <li><strong>{t('section1_cif')}:</strong> {t('section1_cif_value')}</li>
+            <li><strong>{t('section1_address')}:</strong> {t('section1_address_value')}</li>
+            <li><strong>{t('section1_email')}:</strong> <a href="mailto:hola@magnetia.io" className="text-magnetia-red hover:underline">hola@magnetia.io</a></li>
+            <li><strong>{t('section1_phone')}:</strong> <a href="tel:+34634185582" className="text-magnetia-red hover:underline">(+34) 634 18 55 82</a></li>
+            <li><strong>{t('section1_registry')}:</strong> {t('section1_registry_value')}</li>
           </ul>
 
           {/* Condiciones de Uso */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            2. Condiciones de Uso
+            {t('section2_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            El acceso y uso de este sitio web atribuye la condición de usuario y supone la aceptación plena de todas las condiciones incluidas en este Aviso Legal. El usuario se compromete a hacer un uso correcto del sitio web de conformidad con la legislación vigente.
+            {t('section2_p1')}
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Magnetia, S.L.L. se reserva el derecho de modificar en cualquier momento las condiciones generales de uso de este sitio web, por lo que el usuario debe revisar periódicamente este apartado.
+            {t('section2_p2')}
           </p>
 
           {/* Obligaciones del Usuario */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            3. Obligaciones del Usuario
+            {t('section3_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            El usuario se compromete a:
+            {t('section3_intro')}
           </p>
           <ul className="text-gray-600 mb-4 space-y-2 list-disc pl-6">
-            <li>Hacer un uso adecuado y lícito del sitio web</li>
-            <li>No utilizar el sitio web para fines ilícitos o contrarios a lo establecido en el presente Aviso Legal</li>
-            <li>No realizar actividades publicitarias o de explotación comercial sin autorización previa</li>
-            <li>No difundir contenidos o propaganda de carácter racista, xenófobo, pornográfico, de apología del terrorismo o atentatorio contra los derechos humanos</li>
-            <li>No introducir virus informáticos, archivos defectuosos, o cualquier otro programa o archivo que pueda dañar el funcionamiento del sitio web</li>
+            <li>{t('section3_item1')}</li>
+            <li>{t('section3_item2')}</li>
+            <li>{t('section3_item3')}</li>
+            <li>{t('section3_item4')}</li>
+            <li>{t('section3_item5')}</li>
           </ul>
 
           {/* Propiedad Intelectual */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            4. Propiedad Intelectual e Industrial
+            {t('section4_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Todos los contenidos de este sitio web, incluyendo textos, imágenes, marcas, gráficos, logotipos, botones, archivos de software, combinaciones de colores, así como la estructura, selección, ordenación y presentación de sus contenidos, se encuentran protegidos por las leyes sobre Propiedad Intelectual e Industrial.
+            {t('section4_p1')}
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            El uso no autorizado de la información contenida en este sitio web, así como la lesión de los derechos de Propiedad Intelectual o Industrial de Magnetia, S.L.L. o de terceros incluidos en el sitio web, dará lugar a las responsabilidades legalmente establecidas.
+            {t('section4_p2')}
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Queda expresamente prohibida la reproducción total o parcial de este sitio web, ni siquiera mediante un hiperenlace, sin la autorización expresa de Magnetia, S.L.L.
+            {t('section4_p3')}
           </p>
 
           {/* Enlaces */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            5. Enlaces a Terceros
+            {t('section5_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Este sitio web puede contener enlaces a sitios web de terceros. Magnetia, S.L.L. no asume ninguna responsabilidad por el contenido de dichos sitios web ni por las prácticas de privacidad de los mismos. La inclusión de estos enlaces no implica la aprobación de los contenidos de dichas páginas web.
+            {t('section5_p1')}
           </p>
 
           {/* Limitación de Responsabilidad */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            6. Limitación de Responsabilidad
+            {t('section6_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Magnetia, S.L.L. no se hace responsable de los daños y perjuicios de cualquier naturaleza que puedan deberse a:
+            {t('section6_intro')}
           </p>
           <ul className="text-gray-600 mb-4 space-y-2 list-disc pl-6">
-            <li>La falta de disponibilidad, mantenimiento y efectivo funcionamiento del sitio web o de sus servicios y contenidos</li>
-            <li>La existencia de virus, programas maliciosos o lesivos en los contenidos</li>
-            <li>El uso ilícito, negligente, fraudulento o contrario al presente Aviso Legal</li>
-            <li>La falta de licitud, calidad, fiabilidad, utilidad y disponibilidad de los servicios prestados por terceros y puestos a disposición de los usuarios en el sitio web</li>
+            <li>{t('section6_item1')}</li>
+            <li>{t('section6_item2')}</li>
+            <li>{t('section6_item3')}</li>
+            <li>{t('section6_item4')}</li>
           </ul>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            No obstante, Magnetia, S.L.L. se compromete a hacer todo lo posible para garantizar la disponibilidad y el correcto funcionamiento del sitio web.
+            {t('section6_p2')}
           </p>
 
           {/* Protección de Datos */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            7. Protección de Datos
+            {t('section7_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Para conocer cómo tratamos sus datos personales, consulte nuestra{' '}
-            <a href="/politica-de-privacidad" className="text-magnetia-red hover:underline">
-              Política de Privacidad
-            </a>.
+            {t('section7_p1')}{' '}
+            <Link href="/politica-de-privacidad" className="text-magnetia-red hover:underline">
+              {t('section7_link')}
+            </Link>.
           </p>
 
           {/* Legislación Aplicable */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            8. Legislación Aplicable y Jurisdicción
+            {t('section8_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Las presentes Condiciones Generales se rigen por la legislación española. Para la resolución de cualquier conflicto que pueda surgir con ocasión de la visita al sitio web o del uso de los servicios que en él se puedan ofertar, Magnetia, S.L.L. y el Usuario acuerdan someterse a los Jueces y Tribunales del domicilio del Usuario.
+            {t('section8_p1')}
           </p>
 
           {/* Contacto */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            9. Contacto
+            {t('section9_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Para cualquier consulta relacionada con este Aviso Legal, puede contactarnos en:
+            {t('section9_intro')}
           </p>
           <ul className="text-gray-600 mb-4 space-y-2">
-            <li><strong>Email:</strong> <a href="mailto:hola@magnetia.io" className="text-magnetia-red hover:underline">hola@magnetia.io</a></li>
-            <li><strong>Teléfono:</strong> <a href="tel:+34634185582" className="text-magnetia-red hover:underline">(+34) 634 18 55 82</a></li>
-            <li><strong>Dirección:</strong> Calle Pelayo 8, 1ºB, 33800 Cangas del Narcea, Asturias, España</li>
+            <li><strong>{t('section1_email')}:</strong> <a href="mailto:hola@magnetia.io" className="text-magnetia-red hover:underline">hola@magnetia.io</a></li>
+            <li><strong>{t('section1_phone')}:</strong> <a href="tel:+34634185582" className="text-magnetia-red hover:underline">(+34) 634 18 55 82</a></li>
+            <li><strong>{t('section9_address_label')}:</strong> {t('section1_address_value')}</li>
           </ul>
         </div>
       </main>

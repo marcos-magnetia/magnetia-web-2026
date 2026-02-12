@@ -5,22 +5,49 @@ import { getTranslations } from 'next-intl/server'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 
-export const metadata: Metadata = {
-  title: 'Contacto - Agenda tu Reunión',
-  description: 'Agenda una reunión con nuestro equipo para descubrir cómo podemos ayudarte a generar más clientes B2B cualificados. Consulta gratuita de 30 minutos.',
-  openGraph: {
-    title: 'Contacto - Agenda tu Reunión | Magnetia',
-    description: 'Agenda una reunión con nuestro equipo para descubrir cómo podemos ayudarte a generar más clientes B2B cualificados.',
-    url: 'https://www.magnetia.io/contacto',
-  },
-  twitter: {
-    title: 'Contacto - Agenda tu Reunión | Magnetia',
-    description: 'Agenda una reunión con nuestro equipo. Consulta gratuita de 30 minutos.',
-  },
+type Props = {
+  params: Promise<{ locale: string }>
 }
 
-export default async function Contacto() {
-  const t = await getTranslations('contact')
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'contact' })
+
+  const baseUrl = 'https://www.magnetia.io'
+  const path = locale === 'es' ? '/contacto' : '/en/contact'
+  const alternateEs = '/contacto'
+  const alternateEn = '/en/contact'
+
+  return {
+    title: `${t('pretitle')} - ${t('title')}`,
+    description: t('desc'),
+    alternates: {
+      canonical: `${baseUrl}${path}`,
+      languages: {
+        'es': `${baseUrl}${alternateEs}`,
+        'en': `${baseUrl}${alternateEn}`,
+        'x-default': `${baseUrl}${alternateEs}`,
+      },
+    },
+    openGraph: {
+      title: `${t('title')} | Magnetia`,
+      description: t('desc'),
+      url: `${baseUrl}${path}`,
+      siteName: 'Magnetia',
+      locale: locale === 'es' ? 'es_ES' : 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${t('title')} | Magnetia`,
+      description: t('desc'),
+    },
+  }
+}
+
+export default async function Contacto({ params }: Props) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'contact' })
   
   return (
     <>

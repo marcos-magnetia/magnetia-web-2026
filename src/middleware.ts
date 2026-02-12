@@ -1,10 +1,12 @@
 import createMiddleware from 'next-intl/middleware';
+import { locales, pathnames } from './i18n/navigation';
 
 export default createMiddleware({
-  locales: ['es', 'en'],
+  locales,
   defaultLocale: 'es',
   localePrefix: 'as-needed',
   localeDetection: true,
+  pathnames,
 });
 
 export const config = {

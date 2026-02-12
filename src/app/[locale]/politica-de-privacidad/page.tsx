@@ -1,198 +1,226 @@
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { getTranslations } from 'next-intl/server'
+import type { Metadata } from 'next'
+import { Link } from '@/i18n/navigation'
 
-export const metadata = {
-  title: 'Política de Privacidad — Magnetia',
-  description: 'Política de privacidad y protección de datos de Magnetia, S.L.L. conforme al RGPD.',
-  robots: {
-    index: true,
-    follow: false,
-  },
+type Props = {
+  params: Promise<{ locale: string }>
 }
 
-export default function PoliticaDePrivacidad() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'privacyPolicy' })
+
+  const baseUrl = 'https://www.magnetia.io'
+  const path = locale === 'es' ? '/politica-de-privacidad' : '/en/privacy-policy'
+
+  return {
+    title: `${t('title')} — Magnetia`,
+    description: locale === 'es'
+      ? 'Política de privacidad y protección de datos de Magnetia, S.L.L. conforme al RGPD.'
+      : 'Privacy and data protection policy of Magnetia, S.L.L. in accordance with GDPR.',
+    robots: {
+      index: true,
+      follow: false,
+    },
+    alternates: {
+      canonical: `${baseUrl}${path}`,
+      languages: {
+        'es': `${baseUrl}/politica-de-privacidad`,
+        'en': `${baseUrl}/en/privacy-policy`,
+        'x-default': `${baseUrl}/politica-de-privacidad`,
+      },
+    },
+  }
+}
+
+export default async function PoliticaDePrivacidad({ params }: Props) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'privacyPolicy' })
+
   return (
     <>
       <Header />
       <main className="pt-32 pb-20 px-5 lg:px-10">
         <div className="max-w-[800px] mx-auto prose prose-gray">
           <h1 className="font-bold text-4xl tracking-tight mb-8 text-magnetia-black">
-            Política de Privacidad
+            {t('title')}
           </h1>
 
           <p className="text-gray-600 mb-8 leading-relaxed">
-            Última actualización: 10 de febrero de 2026
+            {t('lastUpdated')}
           </p>
 
           <p className="text-gray-600 mb-4 leading-relaxed">
-            En Magnetia, S.L.L. nos tomamos muy en serio la protección de sus datos personales. Esta Política de Privacidad describe cómo recopilamos, utilizamos y protegemos su información personal de acuerdo con el Reglamento General de Protección de Datos (RGPD) y la legislación española vigente.
+            {t('intro')}
           </p>
 
           {/* Responsable */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            1. Responsable del Tratamiento
+            {t('section1_title')}
           </h2>
           <ul className="text-gray-600 mb-4 space-y-2">
-            <li><strong>Titular:</strong> Magnetia, S.L.L.</li>
-            <li><strong>CIF:</strong> B44693810</li>
-            <li><strong>Domicilio:</strong> Calle Pelayo 8, 1ºB, 33800 Cangas del Narcea, Asturias, España</li>
-            <li><strong>Email:</strong> <a href="mailto:hola@magnetia.io" className="text-magnetia-red hover:underline">hola@magnetia.io</a></li>
-            <li><strong>Teléfono:</strong> <a href="tel:+34634185582" className="text-magnetia-red hover:underline">(+34) 634 18 55 82</a></li>
+            <li>{t('section1_item1')}</li>
+            <li>{t('section1_item2')}</li>
+            <li>{t('section1_item3')}</li>
+            <li><strong>{t('section1_item4')}</strong> <a href="mailto:hola@magnetia.io" className="text-magnetia-red hover:underline">hola@magnetia.io</a></li>
+            <li><strong>{t('section1_item5')}</strong> <a href="tel:+34634185582" className="text-magnetia-red hover:underline">(+34) 634 18 55 82</a></li>
           </ul>
 
           {/* Datos que recopilamos */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            2. Datos que Recopilamos
+            {t('section2_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Podemos recopilar y tratar las siguientes categorías de datos personales:
+            {t('section2_intro')}
           </p>
           <ul className="text-gray-600 mb-4 space-y-2 list-disc pl-6">
-            <li><strong>Datos de identificación:</strong> Nombre, apellidos, dirección de correo electrónico, número de teléfono</li>
-            <li><strong>Datos de la empresa:</strong> Nombre de la empresa, cargo, sector de actividad</li>
-            <li><strong>Datos de navegación:</strong> Dirección IP, tipo de navegador, páginas visitadas, tiempo de permanencia (a través de cookies)</li>
-            <li><strong>Datos comerciales:</strong> Información sobre consultas, contratación de servicios y comunicaciones</li>
+            <li>{t('section2_item1')}</li>
+            <li>{t('section2_item2')}</li>
+            <li>{t('section2_item3')}</li>
+            <li>{t('section2_item4')}</li>
           </ul>
 
           {/* Finalidad */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            3. Finalidad del Tratamiento
+            {t('section3_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Sus datos personales serán tratados para las siguientes finalidades:
+            {t('section3_intro')}
           </p>
           <ul className="text-gray-600 mb-4 space-y-2 list-disc pl-6">
-            <li>Gestionar solicitudes de información y consultas recibidas a través del sitio web</li>
-            <li>Proporcionar los servicios contratados y mantener la relación comercial</li>
-            <li>Realizar análisis y mejoras de nuestros servicios</li>
-            <li>Enviar comunicaciones comerciales sobre nuestros servicios (solo con su consentimiento previo)</li>
-            <li>Cumplir con obligaciones legales y fiscales</li>
+            <li>{t('section3_item1')}</li>
+            <li>{t('section3_item2')}</li>
+            <li>{t('section3_item3')}</li>
+            <li>{t('section3_item4')}</li>
+            <li>{t('section3_item5')}</li>
           </ul>
 
           {/* Base Legal */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            4. Base Legal del Tratamiento
+            {t('section4_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            El tratamiento de sus datos se basa en:
+            {t('section4_intro')}
           </p>
           <ul className="text-gray-600 mb-4 space-y-2 list-disc pl-6">
-            <li><strong>Consentimiento:</strong> Al proporcionarnos sus datos a través de formularios de contacto o suscripción</li>
-            <li><strong>Ejecución de contrato:</strong> Cuando es necesario para la prestación de servicios solicitados</li>
-            <li><strong>Interés legítimo:</strong> Para análisis de uso del sitio web y mejora de servicios</li>
-            <li><strong>Obligación legal:</strong> Cuando sea requerido por normativa vigente</li>
+            <li>{t('section4_item1')}</li>
+            <li>{t('section4_item2')}</li>
+            <li>{t('section4_item3')}</li>
+            <li>{t('section4_item4')}</li>
           </ul>
 
           {/* Plazo de Conservación */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            5. Plazo de Conservación
+            {t('section5_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Los datos personales proporcionados se conservarán durante el tiempo necesario para cumplir con la finalidad para la que se recabaron y para determinar las posibles responsabilidades que se pudieran derivar de dicha finalidad y del tratamiento de los datos. Como norma general, los datos se conservarán durante un plazo de <strong>5 años</strong> desde la última interacción, salvo que:
+            {t('section5_p1')}
           </p>
           <ul className="text-gray-600 mb-4 space-y-2 list-disc pl-6">
-            <li>Exista una obligación legal de conservación por un período superior</li>
-            <li>El interesado solicite su supresión antes de dicho plazo</li>
-            <li>Sea necesario para el cumplimiento de obligaciones contractuales vigentes</li>
+            <li>{t('section5_item1')}</li>
+            <li>{t('section5_item2')}</li>
+            <li>{t('section5_item3')}</li>
           </ul>
 
           {/* Destinatarios */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            6. Destinatarios de los Datos
+            {t('section6_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Sus datos podrán ser comunicados a:
+            {t('section6_intro')}
           </p>
           <ul className="text-gray-600 mb-4 space-y-2 list-disc pl-6">
-            <li>Proveedores de servicios tecnológicos (hosting, email marketing, analítica web)</li>
-            <li>Asesores legales, fiscales y contables</li>
-            <li>Administraciones públicas cuando exista obligación legal</li>
+            <li>{t('section6_item1')}</li>
+            <li>{t('section6_item2')}</li>
+            <li>{t('section6_item3')}</li>
           </ul>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            No se realizarán transferencias internacionales de datos fuera del Espacio Económico Europeo sin garantías adecuadas de protección.
+            {t('section6_p1')}
           </p>
 
           {/* Derechos */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            7. Derechos del Usuario
+            {t('section7_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Conforme al RGPD, usted tiene derecho a:
+            {t('section7_intro')}
           </p>
           <ul className="text-gray-600 mb-4 space-y-2 list-disc pl-6">
-            <li><strong>Acceso:</strong> Conocer qué datos personales estamos tratando sobre usted</li>
-            <li><strong>Rectificación:</strong> Solicitar la corrección de datos inexactos o incompletos</li>
-            <li><strong>Supresión:</strong> Solicitar la eliminación de sus datos cuando ya no sean necesarios</li>
-            <li><strong>Limitación:</strong> Solicitar la limitación del tratamiento de sus datos</li>
-            <li><strong>Portabilidad:</strong> Recibir sus datos en formato estructurado y de uso común</li>
-            <li><strong>Oposición:</strong> Oponerse al tratamiento de sus datos en determinadas circunstancias</li>
-            <li><strong>Revocación del consentimiento:</strong> Retirar el consentimiento en cualquier momento</li>
+            <li>{t('section7_item1')}</li>
+            <li>{t('section7_item2')}</li>
+            <li>{t('section7_item3')}</li>
+            <li>{t('section7_item4')}</li>
+            <li>{t('section7_item5')}</li>
+            <li>{t('section7_item6')}</li>
+            <li>{t('section7_item7')}</li>
           </ul>
 
           {/* Ejercicio de Derechos */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            8. Ejercicio de Derechos
+            {t('section8_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Para ejercer cualquiera de estos derechos, puede contactarnos en:
+            {t('section8_intro')}
           </p>
           <ul className="text-gray-600 mb-4 space-y-2">
-            <li><strong>Email:</strong> <a href="mailto:hola@magnetia.io" className="text-magnetia-red hover:underline">hola@magnetia.io</a></li>
-            <li><strong>Dirección postal:</strong> Calle Pelayo 8, 1ºB, 33800 Cangas del Narcea, Asturias, España</li>
+            <li><strong>{t('section8_item1')}</strong> <a href="mailto:hola@magnetia.io" className="text-magnetia-red hover:underline">hola@magnetia.io</a></li>
+            <li>{t('section8_item2')}</li>
           </ul>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Deberá incluir fotocopia de su DNI o documento equivalente que acredite su identidad. Responderemos a su solicitud en el plazo máximo de un mes desde la recepción.
+            {t('section8_p1')}
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Asimismo, tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer" className="text-magnetia-red hover:underline">www.aepd.es</a>) si considera que el tratamiento de sus datos no es conforme a la normativa vigente.
+            {t('section8_p2')}<a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer" className="text-magnetia-red hover:underline">{t('section8_p2_link')}</a>{t('section8_p2_end')}
           </p>
 
           {/* Seguridad */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            9. Medidas de Seguridad
+            {t('section9_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Magnetia, S.L.L. ha adoptado las medidas técnicas y organizativas necesarias para garantizar la seguridad e integridad de los datos personales que trata, así como para evitar su pérdida, alteración y/o acceso por parte de terceros no autorizados.
+            {t('section9_p1')}
           </p>
 
           {/* Menores */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            10. Usuarios Menores de Edad
+            {t('section10_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Este sitio web no está dirigido a menores de 14 años. Si es menor de edad, necesitará el consentimiento de sus padres o tutores para proporcionarnos sus datos personales. Si detectamos que hemos recopilado datos de un menor sin el consentimiento parental adecuado, eliminaremos dicha información lo antes posible.
+            {t('section10_p1')}
           </p>
 
           {/* Cookies */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            11. Cookies
+            {t('section11_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Este sitio web utiliza cookies para mejorar la experiencia del usuario y analizar el tráfico del sitio. Para más información sobre el uso de cookies, consulte nuestra{' '}
-            <a href="/politica-de-cookies" className="text-magnetia-red hover:underline">
-              Política de Cookies
-            </a>.
+            {t('section11_p1')}{' '}
+            <Link href="/politica-de-cookies" className="text-magnetia-red hover:underline">
+              {t('section11_link')}
+            </Link>.
           </p>
 
           {/* Modificaciones */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            12. Modificaciones de la Política
+            {t('section12_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Magnetia, S.L.L. se reserva el derecho de modificar la presente Política de Privacidad para adaptarla a novedades legislativas, jurisprudenciales o por cambios en nuestras prácticas empresariales. Cualquier modificación será publicada en este sitio web con indicación de la fecha de última actualización.
+            {t('section12_p1')}
           </p>
 
           {/* Contacto */}
           <h2 className="font-bold text-2xl tracking-tight mt-12 mb-4 text-magnetia-black">
-            13. Contacto
+            {t('section13_title')}
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Si tiene alguna pregunta sobre esta Política de Privacidad o sobre el tratamiento de sus datos personales, no dude en contactarnos:
+            {t('section13_intro')}
           </p>
           <ul className="text-gray-600 mb-4 space-y-2">
-            <li><strong>Email:</strong> <a href="mailto:hola@magnetia.io" className="text-magnetia-red hover:underline">hola@magnetia.io</a></li>
-            <li><strong>Teléfono:</strong> <a href="tel:+34634185582" className="text-magnetia-red hover:underline">(+34) 634 18 55 82</a></li>
-            <li><strong>Dirección:</strong> Calle Pelayo 8, 1ºB, 33800 Cangas del Narcea, Asturias, España</li>
+            <li><strong>{t('section13_item1')}</strong> <a href="mailto:hola@magnetia.io" className="text-magnetia-red hover:underline">hola@magnetia.io</a></li>
+            <li><strong>{t('section13_item2')}</strong> <a href="tel:+34634185582" className="text-magnetia-red hover:underline">(+34) 634 18 55 82</a></li>
+            <li>{t('section13_item3')}</li>
           </ul>
         </div>
       </main>
