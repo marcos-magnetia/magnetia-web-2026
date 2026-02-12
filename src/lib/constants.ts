@@ -131,7 +131,7 @@ export const SERVICIOS_LIST: ServiceRowData[] = [
     serviceName: 'Organización Interna + Automatizaciones con IA',
     price: 'A medida',
     description: 'Traemos orden a tu empresa. Optimizamos procesos comerciales y de marketing con inteligencia artificial. Montamos automatizaciones que ahorran tiempo y dinero. Formamos a tu equipo.',
-    image: '/imagenes/fotos-servicios/servicio-04-procesos.png',
+    image: '/imagenes/fotos-servicios/servicios-04-procesos-v2.jpg',
     imagePlaceholder: 'Puzzle',
   },
   {
