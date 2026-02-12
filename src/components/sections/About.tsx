@@ -117,8 +117,14 @@ export function About({ variant = 'I' }: AboutProps) {
 }
 
 /* ── Variant A: Single Hero Photo ── */
+interface ContentType {
+  eyebrow: string
+  title: string
+  paragraphs: string[]
+}
+
 interface VariantProps {
-  content: typeof content
+  content: ContentType
   photos: string[]
 }
 
